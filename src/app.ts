@@ -14,7 +14,10 @@ export async function createApp () {
   app.addSchema(CustomerNewFormBody);
 
   app.addHook('onRequest', (request, reply, done) => ormEntityManagerHook(db.em, done));
-  app.addHook('onClose', async () => await db.orm.close());
+  app.addHook('onClose', async () => {
+    app.log.info('ORM is closing');
+    await db.orm.close();
+  });
 
   app.register(cars, { carRepository: db.car, prefix: 'v1/cars' });
   app.register(customers, { customerRepository: db.customer, prefix: 'v1/customers' });
