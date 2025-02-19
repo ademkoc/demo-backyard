@@ -29,7 +29,7 @@ importers:
         version: 6.4.6
       '@mikro-orm/migrations':
         specifier: ^6.4.6
-        version: 6.4.6(@mikro-orm/core@6.4.6)(@types/node@22.13.1)
+        version: 6.4.6(@mikro-orm/core@6.4.6)(@types/node@22.13.4)
       '@semantic-release/changelog':
         specifier: ^6.0.3
         version: 6.0.3(semantic-release@24.2.3(typescript@5.7.3))
@@ -40,8 +40,8 @@ importers:
         specifier: ^6.0.1
         version: 6.0.1
       '@types/node':
-        specifier: 22.13.1
-        version: 22.13.1
+        specifier: 22.13.4
+        version: 22.13.4
       conventional-changelog-conventionalcommits:
         specifier: ^8.0.0
         version: 8.0.0
@@ -556,8 +556,8 @@ packages:
   '@types/lodash@4.17.15':
     resolution: {integrity: sha512-w/P33JFeySuhN6JLkysYUK2gEmy9kHHFN7E8ro0tkfmlDOgxBDzWEZ/J8cWA+fHqFevpswDTFZnDx+R9lbL6xw==}
 
-  '@types/node@22.13.1':
-    resolution: {integrity: sha512-jK8uzQlrvXqEU91UxiK5J7pKHyzgnI1Qnl0QDHIgVGuolJhRb9EEl28Cj9b3rGR8B2lhFCtvIm5os8lFnO/1Ew==}
+  '@types/node@22.13.4':
+    resolution: {integrity: sha512-ywP2X0DYtX3y08eFVx5fNIw7/uIv8hYUKgXoK8oayJlLnKcRfEYCxWMVE1XagUdVtCJlZT1AU4LXEABW+L1Peg==}
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
@@ -3422,12 +3422,12 @@ snapshots:
       - supports-color
       - tedious
 
-  '@mikro-orm/migrations@6.4.6(@mikro-orm/core@6.4.6)(@types/node@22.13.1)':
+  '@mikro-orm/migrations@6.4.6(@mikro-orm/core@6.4.6)(@types/node@22.13.4)':
     dependencies:
       '@mikro-orm/core': 6.4.6
       '@mikro-orm/knex': 6.4.6(@mikro-orm/core@6.4.6)(sqlite3@5.1.7)
       fs-extra: 11.3.0
-      umzug: 3.8.2(@types/node@22.13.1)
+      umzug: 3.8.2(@types/node@22.13.4)
     transitivePeerDependencies:
       - '@types/node'
       - better-sqlite3
@@ -3557,7 +3557,7 @@ snapshots:
       '@pnpm/network.ca-file': 1.0.2
       config-chain: 1.1.13
 
-  '@rushstack/node-core-library@5.11.0(@types/node@22.13.1)':
+  '@rushstack/node-core-library@5.11.0(@types/node@22.13.4)':
     dependencies:
       ajv: 8.13.0
       ajv-draft-04: 1.0.0(ajv@8.13.0)
@@ -3568,18 +3568,18 @@ snapshots:
       resolve: 1.22.10
       semver: 7.5.4
     optionalDependencies:
-      '@types/node': 22.13.1
+      '@types/node': 22.13.4
 
-  '@rushstack/terminal@0.15.0(@types/node@22.13.1)':
+  '@rushstack/terminal@0.15.0(@types/node@22.13.4)':
     dependencies:
-      '@rushstack/node-core-library': 5.11.0(@types/node@22.13.1)
+      '@rushstack/node-core-library': 5.11.0(@types/node@22.13.4)
       supports-color: 8.1.1
     optionalDependencies:
-      '@types/node': 22.13.1
+      '@types/node': 22.13.4
 
-  '@rushstack/ts-command-line@4.23.5(@types/node@22.13.1)':
+  '@rushstack/ts-command-line@4.23.5(@types/node@22.13.4)':
     dependencies:
-      '@rushstack/terminal': 0.15.0(@types/node@22.13.1)
+      '@rushstack/terminal': 0.15.0(@types/node@22.13.4)
       '@types/argparse': 1.0.38
       argparse: 1.0.10
       string-argv: 0.3.2
@@ -3702,7 +3702,7 @@ snapshots:
 
   '@types/lodash@4.17.15': {}
 
-  '@types/node@22.13.1':
+  '@types/node@22.13.4':
     dependencies:
       undici-types: 6.20.0
 
@@ -6497,9 +6497,9 @@ snapshots:
   uglify-js@3.19.3:
     optional: true
 
-  umzug@3.8.2(@types/node@22.13.1):
+  umzug@3.8.2(@types/node@22.13.4):
     dependencies:
-      '@rushstack/ts-command-line': 4.23.5(@types/node@22.13.1)
+      '@rushstack/ts-command-line': 4.23.5(@types/node@22.13.4)
       emittery: 0.13.1
       fast-glob: 3.3.3
       pony-cause: 2.1.11
