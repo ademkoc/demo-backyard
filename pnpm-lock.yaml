@@ -36,6 +36,9 @@ importers:
       '@semantic-release/commit-analyzer':
         specifier: ^13.0.1
         version: 13.0.1(semantic-release@24.2.3(typescript@5.7.3))
+      '@sourcemeta/jsonschema':
+        specifier: ^6.0.1
+        version: 6.0.1
       '@types/node':
         specifier: 22.13.1
         version: 22.13.1
@@ -523,6 +526,10 @@ packages:
   '@sindresorhus/merge-streams@4.0.0':
     resolution: {integrity: sha512-tlqY9xq5ukxTUZBmoOp+m61cqwQD5pHJtFY3Mn8CA8ps6yghLH/Hw8UPdqg4OLmFW3IFlcXnQNmo/dh8HzXYIQ==}
     engines: {node: '>=18'}
+
+  '@sourcemeta/jsonschema@6.0.1':
+    resolution: {integrity: sha512-+551eXdmyTjmMeZXPwA+qYXAP66uj0nOSXD1oTvfhSx/kS1LPRS0mYQf7h3TVdzHouzywilDTj3SUFX9D+I0lg==}
+    hasBin: true
 
   '@stylistic/eslint-plugin@2.11.0':
     resolution: {integrity: sha512-PNRHbydNG5EH8NK4c+izdJlxajIR6GxcUhzsYNRsn6Myep4dsZt0qFCz3rCPnkvgO5FYibDcMqgNHUT+zvjYZw==}
@@ -3667,6 +3674,8 @@ snapshots:
   '@sindresorhus/merge-streams@2.3.0': {}
 
   '@sindresorhus/merge-streams@4.0.0': {}
+
+  '@sourcemeta/jsonschema@6.0.1': {}
 
   '@stylistic/eslint-plugin@2.11.0(eslint@9.20.1)(typescript@5.7.3)':
     dependencies:
