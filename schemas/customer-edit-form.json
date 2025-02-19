@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$id": "https://koc.app/schemas/rentacarserver/customer-edit-form.json",
+  "type": "object",
+  "title": "CustomerEditFormBody",
+  "description": "This is the the request body for editing customer.",
+
+  "required": [],
+  "additionalProperties": false,
+
+  "properties": {
+    "customerId": {
+      "type": "string",
+      "description": "client_id for this client. May be omitted for edits and must not change from the original",
+      "readOnly": true
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the customer"
+    },
+    "surname": {
+      "type": "string",
+      "description": "The surname of the customer"
+    },
+    "birthdate": {
+      "type": "string",
+      "description": "The birthdate of the customer DD/MM/YYYY"
+    }
+  }
+
+}

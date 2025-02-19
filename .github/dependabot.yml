@@ -1,0 +1,14 @@
+version: 2
+updates:
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'daily'
+    open-pull-requests-limit: 10
+    commit-message:
+      prefix: 'fix(deps)'
+      prefix-development: 'chore(deps):'
+    assignees:
+      - 'ademkoc'
+    reviewers:
+      - 'ademkoc'

@@ -1,0 +1,151 @@
+{
+  "name": "create-ts-app",
+  "version": "0.0.0",
+  "private": true,
+  "description": "",
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ademkoc/create-ts-app.git"
+  },
+  "license": "MIT",
+  "author": "Adem Koç",
+  "type": "module",
+  "scripts": {
+    "prebuild": "pnpm lint && rimraf ./dist",
+    "build": "tsc",
+    "check-updates": "pnpm outdated --recursive --long",
+    "dev": "node --import=tsx --watch --env-file=.env src/server.ts",
+    "generatetypes": "node --import=tsx bin/generate-api-types.mjs",
+    "preinstall": "npx only-allow pnpm",
+    "lint": "eslint && pnpm typecheck",
+    "lint:fix": "eslint --fix",
+    "migration:create": "NODE_OPTIONS='--import=tsx' mikro-orm migration:create",
+    "migration:down": "NODE_OPTIONS='--import=tsx' mikro-orm migration:down",
+    "migration:up": "NODE_OPTIONS='--import=tsx' mikro-orm migration:up",
+    "release": "semantic-release",
+    "start": "node --enable-source-maps dist/index.js",
+    "test": "node --import=tsx --test ./test/*.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "release": {
+    "plugins": [
+      [
+        "@semantic-release/commit-analyzer",
+        {
+          "preset": "conventionalcommits",
+          "releaseRules": [
+            {
+              "type": "breaking",
+              "release": "major"
+            },
+            {
+              "type": "feat",
+              "release": "minor"
+            },
+            {
+              "type": "chore",
+              "release": "patch"
+            },
+            {
+              "type": "fix",
+              "release": "patch"
+            },
+            {
+              "type": "docs",
+              "release": "patch"
+            },
+            {
+              "type": "refactor",
+              "release": "patch"
+            },
+            {
+              "type": "test",
+              "release": "patch"
+            }
+          ]
+        }
+      ],
+      [
+        "@semantic-release/release-notes-generator",
+        {
+          "preset": "conventionalcommits",
+          "presetConfig": {
+            "types": [
+              {
+                "type": "feat",
+                "section": "Features"
+              },
+              {
+                "type": "fix",
+                "section": "Bug Fixes"
+              },
+              {
+                "type": "chore",
+                "section": "Chores"
+              },
+              {
+                "type": "docs",
+                "section": "Documentation"
+              },
+              {
+                "type": "refactor",
+                "section": "Refactors"
+              },
+              {
+                "type": "test",
+                "section": "Tests"
+              }
+            ]
+          }
+        }
+      ],
+      "@semantic-release/changelog",
+      "@semantic-release/github"
+    ]
+  },
+  "dependencies": {
+    "@fastify/type-provider-json-schema-to-ts": "^5.0.0",
+    "@mikro-orm/core": "^6.4.6",
+    "@mikro-orm/sqlite": "^6.4.6",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "fast-uri": "^3.0.6",
+    "fastify": "^5.2.1",
+    "fastify-plugin": "^5.0.1"
+  },
+  "devDependencies": {
+    "@mikro-orm/cli": "^6.4.6",
+    "@mikro-orm/migrations": "^6.4.6",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@types/node": "22.13.1",
+    "conventional-changelog-conventionalcommits": "^8.0.0",
+    "eslint": "9.20.1",
+    "fastify-tsconfig": "3.0.0",
+    "json-schema-to-typescript": "15.0.4",
+    "neostandard": "0.12.1",
+    "rimraf": "6.0.1",
+    "semantic-release": "^24.2.3",
+    "sql-formatter": "^15.4.10",
+    "tsx": "4.19.2",
+    "typescript": "5.7.3"
+  },
+  "packageManager": "pnpm@10.4.1+sha512.c753b6c3ad7afa13af388fa6d808035a008e30ea9993f58c6663e2bc5ff21679aa834db094987129aa4d488b86df57f7b634981b2f827cdcacc698cc0cfb88af",
+  "engines": {
+    "node": ">=22"
+  },
+  "mikro-orm": {
+    "alwaysAllowTs": true,
+    "useTsNode": false,
+    "configPaths": [
+      "./src/infrastructure/db/mikro-orm.config.ts"
+    ]
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sqlite3"
+    ]
+  }
+}

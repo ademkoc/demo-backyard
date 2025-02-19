@@ -1,0 +1,10 @@
+{
+  "extends": "fastify-tsconfig",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rewriteRelativeImportExtensions": true,
+    "strictNullChecks": true,
+    "sourceMap": true
+  },
+  "include": ["src", "schemas"]
+}
