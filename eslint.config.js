@@ -5,7 +5,8 @@ import neo from 'neostandard';
 export default [
   ...neo({
     ts: true,
-    semi: true
+    semi: true,
+    ignores: ['dist']
   }),
   {
     rules: {
