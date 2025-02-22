@@ -17,7 +17,7 @@
     "build": "tsc",
     "check-updates": "pnpm outdated --recursive --long",
     "start": "node --import=tsx --env-file=.env src/server.ts",
-    "dev": "pnpm typecheck & pnpm lint & node --import=tsx --watch --env-file=.env src/server.ts",
+    "dev": "pnpm typecheck & pnpm lint & node --import=tsx --watch --watch-preserve-output --env-file=.env src/server.ts",
     "lint": "eslint && jsonschema lint ./schemas",
     "typecheck": "tsc --watch --preserveWatchOutput --noEmit",
     "generate-types": "node --import=tsx bin/generate-api-types.mjs",
