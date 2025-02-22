@@ -21,7 +21,7 @@ class CustomMigrationGenerator extends TSMigrationGenerator {
 export default defineConfig({
   dbName: 'sqlite.db',
   // folder-based discovery setup, using common filename suffix
-  entities: ['dist/modules/**/*.entity.js'],
+  entities: ['src/modules/**/*.entity.js'],
   entitiesTs: ['src/modules/**/*.entity.ts'],
 
   migrations: {
