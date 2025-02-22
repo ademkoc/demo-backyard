@@ -17,9 +17,6 @@ importers:
       '@mikro-orm/sqlite':
         specifier: ^6.4.6
         version: 6.4.6(@mikro-orm/core@6.4.6)
-      close-with-grace:
-        specifier: ^2.2.0
-        version: 2.2.0
       fastify:
         specifier: ^5.2.1
         version: 5.2.1
@@ -870,9 +867,6 @@ packages:
   cliui@8.0.1:
     resolution: {integrity: sha512-BSeNnyus75C4//NQ9gQt1/csTXyo/8Sb+afLAkzAptFuMsod9HFokGNudZpi/oQV73hnVK+sR+5PVRMd+Dr7YQ==}
     engines: {node: '>=12'}
-
-  close-with-grace@2.2.0:
-    resolution: {integrity: sha512-OdcFxnxTm/AMLPHA4Aq3J1BLpkojXP7I4G5QBQLN5TT55ED/rk04rAoDbtfNnfZ988kGXPxh1bdRLeIU9bz/lA==}
 
   color-convert@1.9.3:
     resolution: {integrity: sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==}
@@ -4107,8 +4101,6 @@ snapshots:
       string-width: 4.2.3
       strip-ansi: 6.0.1
       wrap-ansi: 7.0.0
-
-  close-with-grace@2.2.0: {}
 
   color-convert@1.9.3:
     dependencies:
