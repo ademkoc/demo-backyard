@@ -2,10 +2,10 @@ import type { FastifyPluginCallback } from 'fastify';
 import { createCustomerService } from '../customer.service.ts';
 import get from './get.ts';
 import create from './create.ts';
-import { Services } from '../../../infrastructure/db/db.ts';
+import { CustomerRepository } from '../customer.repository.ts';
 
 export interface CustomerModuleOptions {
-  customerRepository: Services['customer']
+  customerRepository: CustomerRepository
 }
 
 const fn: FastifyPluginCallback<CustomerModuleOptions> = (fastify, options, done) => {

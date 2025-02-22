@@ -1,9 +1,9 @@
 import type { FastifyInstance } from 'fastify';
-import { Services } from '../../infrastructure/db/db.ts';
 import { CustomerNewFormBody } from '../../api-types.ts';
+import { CustomerRepository } from './customer.repository.ts';
 
 interface CreateCustomerServiceOptions {
-  customerRepository: Services['customer']
+  customerRepository: CustomerRepository
 }
 
 export function createCustomerService (fastify: FastifyInstance, options: CreateCustomerServiceOptions) {
@@ -11,7 +11,7 @@ export function createCustomerService (fastify: FastifyInstance, options: Create
 }
 
 export class CustomerService {
-  constructor (private readonly customerRepository: Services['customer']) {}
+  constructor (private readonly customerRepository: CustomerRepository) {}
 
   async create (payload: CustomerNewFormBody) {
     const newCustomer = this.customerRepository.insert(payload);
