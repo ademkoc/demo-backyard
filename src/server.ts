@@ -1,15 +1,16 @@
 import packageJson from '../package.json' with { type: 'json' };
 import { createApp } from './app.ts';
+import { getConfig } from './infrastructure/config.ts';
 
 async function startServer () {
   const abortController = new AbortController();
-
+  const config = getConfig();
   const app = await createApp();
 
   try {
     await app.listen({
       host: '0.0.0.0',
-      port: 3000,
+      port: config.port,
       signal: abortController.signal,
       listenTextResolver: (address) => {
         return `${packageJson.name} listening at ${address}`;
