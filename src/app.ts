@@ -1,4 +1,5 @@
 import Fastify from 'fastify';
+import metricsPlugin from 'fastify-metrics';
 import CustomerNewFormBody from '../schemas/customer-new-form.json' with { type: 'json' };
 import carModule from './modules/car/routes/index.ts';
 import customerModule from './modules/customer/routes/index.ts';
@@ -21,6 +22,8 @@ export async function createApp () {
     app.log.info('ORM is closing');
     await db.orm.close();
   });
+
+  app.register(metricsPlugin.default, { endpoint: '/metrics', routeMetrics: { enabled: true } });
 
   app.register(healthModule, { prefix: '/healthcheck' });
   app.register(carModule, { carRepository: db.car, prefix: 'v1/cars' });
