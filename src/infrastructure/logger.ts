@@ -28,6 +28,7 @@ const redactPaths = [
 
 export function getLogger () {
   const config = getConfig();
+
   if (config.environment !== 'production') {
     return pino.default(
       pretty({
@@ -41,7 +42,7 @@ export function getLogger () {
   }
 
   return pino.default({
-    level: getConfig().logLevel as Level,
+    level: config.logLevel as Level,
     redact: {
       paths: redactPaths,
       remove: true

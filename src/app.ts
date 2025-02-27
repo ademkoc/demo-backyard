@@ -6,8 +6,11 @@ import customerModule from './modules/customer/routes/index.ts';
 import healthModule from './modules/healthcheck/routes/index.ts';
 import { getLogger } from './infrastructure/logger.ts';
 import { initORM, ormEntityManagerHook } from './infrastructure/db/db.ts';
+import { otelSdk } from './infrastructure/tracing.ts';
 
 export async function createApp () {
+  otelSdk.start();
+
   const db = await initORM();
 
   const app = Fastify({
@@ -17,10 +20,21 @@ export async function createApp () {
 
   app.addSchema(CustomerNewFormBody);
 
-  app.addHook('onRequest', (request, reply, done) => ormEntityManagerHook(db.em, done));
-  app.addHook('onClose', async () => {
-    app.log.info('ORM is closing');
-    await db.orm.close();
+  app.addHook('onRequest', function onRequest (request, reply, done) { ormEntityManagerHook(db.em, done); });
+  app.addHook('onClose', async function onClose () {
+    try {
+      await db.orm.close();
+      app.log.debug('MikroORM is terminated.');
+    } catch (error) {
+      app.log.error('Error terminating MikroORM', error);
+    }
+
+    try {
+      await otelSdk.shutdown();
+      app.log.debug('OpenTelemetry is terminated.');
+    } catch (error) {
+      app.log.error('Error terminating OpenTelemetry', error);
+    }
   });
 
   app.register(metricsPlugin.default, { endpoint: '/metrics', routeMetrics: { enabled: true } });
