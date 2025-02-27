@@ -130,7 +130,7 @@
     "@sourcemeta/jsonschema": "^6.0.3",
     "@types/node": "22.13.4",
     "conventional-changelog-conventionalcommits": "^8.0.0",
-    "eslint": "9.20.1",
+    "eslint": "9.21.0",
     "fastify-tsconfig": "3.0.0",
     "json-schema-to-typescript": "15.0.4",
     "neostandard": "0.12.1",
