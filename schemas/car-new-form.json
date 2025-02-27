@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://koc.app/schemas/rentacarserver/car-new-form.json",
+  "title": "CarNewFormBody",
+  "description": "This is the the request body for creating new car.",
+  "type": "object",
+  "required": [
+    "brand",
+    "model",
+    "year",
+    "km"
+  ],
+  "properties": {
+    "brand": {
+      "description": "Car brand",
+      "type": "string"
+    },
+    "model": {
+      "description": "Car model",
+      "type": "string"
+    },
+    "year": {
+      "description": "Car model year",
+      "type": "string"
+    },
+    "km": {
+      "description": "Car mileage",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
