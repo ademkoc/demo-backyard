@@ -15,11 +15,11 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0
       '@mikro-orm/core':
-        specifier: ^6.4.6
-        version: 6.4.6
+        specifier: ^6.4.7
+        version: 6.4.7
       '@mikro-orm/sqlite':
         specifier: ^6.4.6
-        version: 6.4.6(@mikro-orm/core@6.4.6)
+        version: 6.4.6(@mikro-orm/core@6.4.7)
       '@opentelemetry/exporter-trace-otlp-http':
         specifier: ^0.57.2
         version: 0.57.2(@opentelemetry/api@1.9.0)
@@ -62,7 +62,7 @@ importers:
         version: 6.4.7
       '@mikro-orm/migrations':
         specifier: ^6.4.7
-        version: 6.4.7(@mikro-orm/core@6.4.6)(@types/node@22.13.4)
+        version: 6.4.7(@mikro-orm/core@6.4.7)(@types/node@22.13.4)
       '@semantic-release/changelog':
         specifier: ^6.0.3
         version: 6.0.3(semantic-release@24.2.3(typescript@5.7.3))
@@ -390,10 +390,6 @@ packages:
     resolution: {integrity: sha512-jaEm8olUP7h/kz4AZyu21TJ8P1qAGgdyvFYG+J5eGAtPsdMN8ZMQJJy2m6DZcHNbuyllCVdzp3XT6MAzG+uwMw==}
     engines: {node: '>= 18.12.0'}
     hasBin: true
-
-  '@mikro-orm/core@6.4.6':
-    resolution: {integrity: sha512-xVm/ALG/3vTMgh6SrvojJ6jjMa0s2hNzWN0triDB16BaNdLwWE4aAaAe+3CuoMFqJAArSOUISTEjExbzELB1ZA==}
-    engines: {node: '>= 18.12.0'}
 
   '@mikro-orm/core@6.4.7':
     resolution: {integrity: sha512-ZePm7IRpW6/tGC6axCezI1/5YA3+MiDsbEj5KHgXDIxzHnftVfL3nbYlPlr0pW/UQSL5QcRqXxHIQz4P2OlFhg==}
@@ -2341,10 +2337,6 @@ packages:
     resolution: {integrity: sha512-PXwfBhYu0hBCPw8Dn0E+WDYb7af3dSLVWKi3HGv84IdF4TyFoC0ysxFd0Goxw7nSv4T/PzEJQxsYsEiFCKo2BA==}
     engines: {node: '>=8.6'}
 
-  mikro-orm@6.4.6:
-    resolution: {integrity: sha512-Lr3uFK06O/4F/AtQAsuYD6QH7DgmUooSVFVGf1y02IuiKVFKOMJ4iKimkRMyoA+ykKhgYIp8WiaEqbWJVuz4Vw==}
-    engines: {node: '>= 18.12.0'}
-
   mikro-orm@6.4.7:
     resolution: {integrity: sha512-lRB92yekDcdQEHloNY9LWfNLyKd3WajxPSe3jBvyVR9gMIO7YsjhqxL0mYvoQi8MQzXcUTi1EkWG05IM3gidIw==}
     engines: {node: '>= 18.12.0'}
@@ -3779,16 +3771,6 @@ snapshots:
       - supports-color
       - tedious
 
-  '@mikro-orm/core@6.4.6':
-    dependencies:
-      dataloader: 2.2.3
-      dotenv: 16.4.7
-      esprima: 4.0.1
-      fs-extra: 11.3.0
-      globby: 11.1.0
-      mikro-orm: 6.4.6
-      reflect-metadata: 0.2.2
-
   '@mikro-orm/core@6.4.7':
     dependencies:
       dataloader: 2.2.3
@@ -3799,24 +3781,9 @@ snapshots:
       mikro-orm: 6.4.7
       reflect-metadata: 0.2.2
 
-  '@mikro-orm/knex@6.4.6(@mikro-orm/core@6.4.6)(sqlite3@5.1.7)':
+  '@mikro-orm/knex@6.4.6(@mikro-orm/core@6.4.7)(sqlite3@5.1.7)':
     dependencies:
-      '@mikro-orm/core': 6.4.6
-      fs-extra: 11.3.0
-      knex: 3.1.0(sqlite3@5.1.7)
-      sqlstring: 2.3.3
-    transitivePeerDependencies:
-      - mysql
-      - mysql2
-      - pg
-      - pg-native
-      - sqlite3
-      - supports-color
-      - tedious
-
-  '@mikro-orm/knex@6.4.7(@mikro-orm/core@6.4.6)':
-    dependencies:
-      '@mikro-orm/core': 6.4.6
+      '@mikro-orm/core': 6.4.7
       fs-extra: 11.3.0
       knex: 3.1.0(sqlite3@5.1.7)
       sqlstring: 2.3.3
@@ -3844,10 +3811,10 @@ snapshots:
       - supports-color
       - tedious
 
-  '@mikro-orm/migrations@6.4.7(@mikro-orm/core@6.4.6)(@types/node@22.13.4)':
+  '@mikro-orm/migrations@6.4.7(@mikro-orm/core@6.4.7)(@types/node@22.13.4)':
     dependencies:
-      '@mikro-orm/core': 6.4.6
-      '@mikro-orm/knex': 6.4.7(@mikro-orm/core@6.4.6)
+      '@mikro-orm/core': 6.4.7
+      '@mikro-orm/knex': 6.4.7(@mikro-orm/core@6.4.7)
       fs-extra: 11.3.0
       umzug: 3.8.2(@types/node@22.13.4)
     transitivePeerDependencies:
@@ -3863,10 +3830,10 @@ snapshots:
       - supports-color
       - tedious
 
-  '@mikro-orm/sqlite@6.4.6(@mikro-orm/core@6.4.6)':
+  '@mikro-orm/sqlite@6.4.6(@mikro-orm/core@6.4.7)':
     dependencies:
-      '@mikro-orm/core': 6.4.6
-      '@mikro-orm/knex': 6.4.6(@mikro-orm/core@6.4.6)(sqlite3@5.1.7)
+      '@mikro-orm/core': 6.4.7
+      '@mikro-orm/knex': 6.4.6(@mikro-orm/core@6.4.7)(sqlite3@5.1.7)
       fs-extra: 11.3.0
       sqlite3: 5.1.7
       sqlstring-sqlite: 0.1.1
@@ -6160,8 +6127,6 @@ snapshots:
     dependencies:
       braces: 3.0.3
       picomatch: 2.3.1
-
-  mikro-orm@6.4.6: {}
 
   mikro-orm@6.4.7: {}
 
