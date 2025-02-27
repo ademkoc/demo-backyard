@@ -61,8 +61,8 @@ importers:
         specifier: ^6.4.7
         version: 6.4.7
       '@mikro-orm/migrations':
-        specifier: ^6.4.6
-        version: 6.4.6(@mikro-orm/core@6.4.6)(@types/node@22.13.4)
+        specifier: ^6.4.7
+        version: 6.4.7(@mikro-orm/core@6.4.6)(@types/node@22.13.4)
       '@semantic-release/changelog':
         specifier: ^6.0.3
         version: 6.0.3(semantic-release@24.2.3(typescript@5.7.3))
@@ -431,8 +431,8 @@ packages:
       mariadb:
         optional: true
 
-  '@mikro-orm/migrations@6.4.6':
-    resolution: {integrity: sha512-i0/H07g1jQS0tKVSTSkHhrmuDEHxDD3/IzkiObezTgGlD5tqN7acaSr8RDJ3DgICb8MHUDVMLwxeGy8igDB4ag==}
+  '@mikro-orm/migrations@6.4.7':
+    resolution: {integrity: sha512-T5d5oPc+2pZq5tLn4PSFo5EGo/kp0l3x8YqLw3mJWetW8OKnUxmj6MPhboptycAHkc7SysakyRh3Oenn6brRXQ==}
     engines: {node: '>= 18.12.0'}
     peerDependencies:
       '@mikro-orm/core': ^6.0.0
@@ -1610,6 +1610,9 @@ packages:
 
   fastq@1.19.0:
     resolution: {integrity: sha512-7SFSRCNjBQIZH/xZR3iy5iQYR8aGBE0h3VG6/cwlbrpdciNYBMotQav8c1XI3HjHH+NikUpP53nPdlZSdWmFzA==}
+
+  fastq@1.19.1:
+    resolution: {integrity: sha512-GwLTyxkCXjXbxqIhTsMI2Nui8huMPtnxg7krajPJAjnEG/iiOS7i+zCtWGZR9G0NBKbXKh6X9m9UIsYX/N6vvQ==}
 
   fdir@6.4.3:
     resolution: {integrity: sha512-PMXmW2y1hDDfTSRc9gaXIuCCRpuoz3Kaz8cUelp3smouvfT632ozg2vrT6lJsHKKOF59YLbOGfAWGUcKEfRMQw==}
@@ -2951,6 +2954,10 @@ packages:
     resolution: {integrity: sha512-U9nH88a3fc/ekCF1l0/UP1IosiuIjyTh7hBvXVMHYgVcfGvt897Xguj2UOLDeI5BG2m7/uwyaLVT6fbtCwTyzw==}
     engines: {iojs: '>=1.0.0', node: '>=0.10.0'}
 
+  reusify@1.1.0:
+    resolution: {integrity: sha512-g6QUff04oZpHs0eG5p83rFLhHeV00ug/Yf9nZM6fLeUrPguBTkTQOdpAWWspMh55TZfVQDPaN3NQJfbVRAxdIw==}
+    engines: {iojs: '>=1.0.0', node: '>=0.10.0'}
+
   rfdc@1.4.1:
     resolution: {integrity: sha512-q1b3N5QkRUWUl7iyylaaj3kOpIT0N2i9MqIEQXP73GVsN9cw3fdx8X63cEmWhJGi2PPCF23Ijp7ktmd39rawIA==}
 
@@ -3807,6 +3814,21 @@ snapshots:
       - supports-color
       - tedious
 
+  '@mikro-orm/knex@6.4.7(@mikro-orm/core@6.4.6)':
+    dependencies:
+      '@mikro-orm/core': 6.4.6
+      fs-extra: 11.3.0
+      knex: 3.1.0(sqlite3@5.1.7)
+      sqlstring: 2.3.3
+    transitivePeerDependencies:
+      - mysql
+      - mysql2
+      - pg
+      - pg-native
+      - sqlite3
+      - supports-color
+      - tedious
+
   '@mikro-orm/knex@6.4.7(@mikro-orm/core@6.4.7)':
     dependencies:
       '@mikro-orm/core': 6.4.7
@@ -3822,10 +3844,10 @@ snapshots:
       - supports-color
       - tedious
 
-  '@mikro-orm/migrations@6.4.6(@mikro-orm/core@6.4.6)(@types/node@22.13.4)':
+  '@mikro-orm/migrations@6.4.7(@mikro-orm/core@6.4.6)(@types/node@22.13.4)':
     dependencies:
       '@mikro-orm/core': 6.4.6
-      '@mikro-orm/knex': 6.4.6(@mikro-orm/core@6.4.6)(sqlite3@5.1.7)
+      '@mikro-orm/knex': 6.4.7(@mikro-orm/core@6.4.6)
       fs-extra: 11.3.0
       umzug: 3.8.2(@types/node@22.13.4)
     transitivePeerDependencies:
@@ -3870,7 +3892,7 @@ snapshots:
   '@nodelib/fs.walk@1.2.8':
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
-      fastq: 1.19.0
+      fastq: 1.19.1
 
   '@nolyfill/is-core-module@1.0.39': {}
 
@@ -5381,6 +5403,10 @@ snapshots:
     dependencies:
       reusify: 1.0.4
 
+  fastq@1.19.1:
+    dependencies:
+      reusify: 1.1.0
+
   fdir@6.4.3(picomatch@4.0.2):
     optionalDependencies:
       picomatch: 4.0.2
@@ -6721,6 +6747,8 @@ snapshots:
     optional: true
 
   reusify@1.0.4: {}
+
+  reusify@1.1.0: {}
 
   rfdc@1.4.1: {}
 
