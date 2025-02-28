@@ -1,22 +1,17 @@
 import fp from 'fastify-plugin';
 import type { FastifyPluginCallback } from 'fastify';
 import type { CarService } from '../car.service.ts';
-import { setTimeout } from 'node:timers/promises';
 
 interface GetCarPluginOptions {
   carService: CarService;
 }
 
-const fn: FastifyPluginCallback<GetCarPluginOptions> = (
-  fastify,
-  options,
-  done
-) => {
-  fastify.get('/:car_id', async function (req, res) {
-    await setTimeout(10000);
-    return '';
-  });
-  done();
-};
+const fn: FastifyPluginCallback<GetCarPluginOptions> =
+  function getCarRoutePlugin (fastify, options, done) {
+    fastify.get('/:car_id', function getCar (req, res) {
+      res.send('adem:koc');
+    });
+    done();
+  };
 
 export default fp(fn);

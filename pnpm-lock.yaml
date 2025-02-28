@@ -20,6 +20,9 @@ importers:
       '@mikro-orm/mysql':
         specifier: ^6.4.7
         version: 6.4.7(@mikro-orm/core@6.4.7)
+      '@opentelemetry/api':
+        specifier: ^1.9.0
+        version: 1.9.0
       '@opentelemetry/exporter-trace-otlp-http':
         specifier: ^0.57.2
         version: 0.57.2(@opentelemetry/api@1.9.0)

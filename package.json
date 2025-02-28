@@ -109,6 +109,7 @@
     "@fastify/type-provider-json-schema-to-ts": "^5.0.0",
     "@mikro-orm/core": "^6.4.7",
     "@mikro-orm/mysql": "^6.4.7",
+    "@opentelemetry/api": "^1.9.0",
     "@opentelemetry/exporter-trace-otlp-http": "^0.57.2",
     "@opentelemetry/instrumentation-http": "^0.57.2",
     "@opentelemetry/resources": "^1.30.1",

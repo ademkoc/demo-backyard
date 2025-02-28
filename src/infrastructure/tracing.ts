@@ -6,11 +6,13 @@ import FastifyOtelInstrumentation from '@fastify/otel';
 import { Resource } from '@opentelemetry/resources';
 import { NodeSDK } from '@opentelemetry/sdk-node';
 import { HttpInstrumentation } from '@opentelemetry/instrumentation-http';
-import { NodeTracerProvider } from '@opentelemetry/sdk-trace-node';
 import { BatchSpanProcessor, AlwaysOnSampler } from '@opentelemetry/sdk-trace-base';
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
+// import { diag, DiagConsoleLogger, DiagLogLevel } from '@opentelemetry/api';
 
 const FastifyInstrumentation = FastifyOtelInstrumentation.default;
+
+// diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
 
 const resource = Resource.default().merge(
   new Resource({
@@ -19,21 +21,19 @@ const resource = Resource.default().merge(
   })
 );
 
-const exporter = new OTLPTraceExporter({
-  url: 'localhost:4318',
-  headers: { 'content-type': 'application/json' }
-});
-
-new NodeTracerProvider({
-  resource,
-  sampler: new AlwaysOnSampler(),
-  spanProcessors: [new BatchSpanProcessor(exporter)]
-}).register();
+const traceExporter = new OTLPTraceExporter();
 
 export const otelSdk = new NodeSDK({
   resource,
+  traceExporter,
+  sampler: new AlwaysOnSampler(),
+  spanProcessors: [new BatchSpanProcessor(traceExporter)],
   instrumentations: [
-    new HttpInstrumentation(),
-    new FastifyInstrumentation({ servername: 'real-demo-app', registerOnInitialization: true })
+    new FastifyInstrumentation({ servername: 'real-demo-app', registerOnInitialization: true }),
+    new HttpInstrumentation({
+      ignoreIncomingRequestHook: (req) => {
+        return req.url === '/metrics';
+      }
+    })
   ]
 });

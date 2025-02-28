@@ -10,7 +10,7 @@ interface CarModuleOptions {
   carRepository: CarRepository
 }
 
-const fn: FastifyPluginCallback<CarModuleOptions> = (fastify, options, done) => {
+const fn: FastifyPluginCallback<CarModuleOptions> = function buildCarModule (fastify, options, done) {
   const carService = createCarService(fastify, { carRepository: options.carRepository });
 
   fastify.register(get, { carService });
