@@ -28,3 +28,9 @@ export function getConfig () {
     logLevel: getEnv('LOG_LEVEL') as Level || 'info'
   };
 }
+
+export function getDatabaseConfig () {
+  return {
+    databaseURL: getMandatoryEnv('DATABASE_URL')
+  };
+}
