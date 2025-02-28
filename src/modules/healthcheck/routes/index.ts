@@ -1,8 +1,8 @@
 import type { FastifyPluginCallback } from 'fastify';
-import health from './health.ts';
+import { healthCheckModule } from './health.ts';
 
 const fn: FastifyPluginCallback = (fastify, options, done) => {
-  fastify.register(health);
+  healthCheckModule(fastify);
 
   done();
 };
