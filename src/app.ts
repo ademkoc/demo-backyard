@@ -5,8 +5,14 @@ import carModule from './modules/car/routes/index.ts';
 import customerModule from './modules/customer/routes/index.ts';
 import healthModule from './modules/healthcheck/routes/index.ts';
 import { getLogger } from './infrastructure/logger.ts';
-import { initORM, ormEntityManagerHook } from './infrastructure/db/db.ts';
+import { initORM, ormEntityManagerHook, Services } from './infrastructure/db/db.ts';
 import { otelSdk } from './infrastructure/tracing.ts';
+
+declare module 'fastify' {
+  interface FastifyInstance {
+    db: Services;
+  }
+}
 
 export async function createApp () {
   otelSdk.start();
@@ -17,6 +23,8 @@ export async function createApp () {
     loggerInstance: getLogger()
     // connectionTimeout: 1000
   });
+
+  app.decorate('db', db);
 
   app.addSchema(CustomerNewFormBody);
 

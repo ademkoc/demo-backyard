@@ -36,4 +36,4 @@ export async function initORM (options?: Options): Promise<Services> {
 }
 
 export const ormEntityManagerHook =
-  (em: Services['em'], done: HookHandlerDoneFunction) => RequestContext.create(em, done);
+  (em: EntityManager, done: HookHandlerDoneFunction) => RequestContext.create(em, done);
