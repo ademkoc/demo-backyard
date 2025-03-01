@@ -8,6 +8,7 @@ import { NodeSDK } from '@opentelemetry/sdk-node';
 import { HttpInstrumentation } from '@opentelemetry/instrumentation-http';
 import { BatchSpanProcessor, AlwaysOnSampler } from '@opentelemetry/sdk-trace-base';
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
+import { MySQL2Instrumentation } from '@opentelemetry/instrumentation-mysql2';
 // import { diag, DiagConsoleLogger, DiagLogLevel } from '@opentelemetry/api';
 
 const FastifyInstrumentation = FastifyOtelInstrumentation.default;
@@ -34,6 +35,7 @@ export const otelSdk = new NodeSDK({
       ignoreIncomingRequestHook: (req) => {
         return req.url === '/metrics';
       }
-    })
+    }),
+    new MySQL2Instrumentation({ enabled: true })
   ]
 });
