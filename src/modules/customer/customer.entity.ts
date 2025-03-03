@@ -1,6 +1,6 @@
 import { Collection, EntitySchema, ReferenceKind } from '@mikro-orm/core';
 import { CustomBaseEntity, CustomBaseEntitySchema } from '../common/base.entity.ts';
-import { ICar } from '../car/car.entity.ts';
+import { Car, ICar } from '../car/car.entity.ts';
 import { CustomerRepository } from './customer.repository.ts';
 
 export interface ICustomer extends CustomBaseEntity {
@@ -20,9 +20,9 @@ export const Customer = new EntitySchema<ICustomer, CustomBaseEntity>({
     birthdate: { type: 'date', nullable: false },
     cars: {
       kind: ReferenceKind.MANY_TO_MANY,
-      owner: true,
-      type: 'Rental',
-      inversedBy: 'customers'
+      entity: () => Car,
+      pivotEntity: 'Rental',
+      fixedOrder: true
     }
   }
 });

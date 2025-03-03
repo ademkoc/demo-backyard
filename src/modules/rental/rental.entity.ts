@@ -1,11 +1,11 @@
-import { Collection, EntitySchema, ReferenceKind } from '@mikro-orm/core';
+import { EntitySchema, ReferenceKind } from '@mikro-orm/core';
 import { CustomBaseEntity, CustomBaseEntitySchema } from '../common/base.entity.ts';
-import { ICar } from '../car/car.entity.ts';
-import { ICustomer } from '../customer/customer.entity.ts';
+import { Car, ICar } from '../car/car.entity.ts';
+import { Customer, ICustomer } from '../customer/customer.entity.ts';
 
 export interface IRental {
-  customers: Collection<ICustomer>;
-  cars: Collection<ICar>;
+  customers: ICustomer;
+  cars: ICar;
   rentDate: Date;
 }
 
@@ -14,16 +14,12 @@ export const Rental = new EntitySchema<IRental, CustomBaseEntity>({
   extends: CustomBaseEntitySchema,
   properties: {
     customers: {
-      kind: ReferenceKind.MANY_TO_MANY,
-      owner: false,
-      type: 'Customer',
-      mappedBy: 'cars'
+      kind: ReferenceKind.MANY_TO_ONE,
+      entity: () => Customer
     },
     cars: {
-      kind: ReferenceKind.MANY_TO_MANY,
-      owner: false,
-      type: 'Car',
-      mappedBy: 'customers'
+      kind: ReferenceKind.MANY_TO_ONE,
+      entity: () => Car
     },
     rentDate: { type: 'date', nullable: true }
   }
