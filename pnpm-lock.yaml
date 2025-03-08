@@ -70,8 +70,8 @@ importers:
         specifier: ^6.4.7
         version: 6.4.7
       '@mikro-orm/migrations':
-        specifier: ^6.4.7
-        version: 6.4.7(@mikro-orm/core@6.4.9)(@types/node@22.13.4)
+        specifier: ^6.4.9
+        version: 6.4.9(@mikro-orm/core@6.4.9)(@types/node@22.13.4)
       '@semantic-release/changelog':
         specifier: ^6.0.3
         version: 6.0.3(semantic-release@24.2.3(typescript@5.7.3))
@@ -448,8 +448,8 @@ packages:
       mariadb:
         optional: true
 
-  '@mikro-orm/migrations@6.4.7':
-    resolution: {integrity: sha512-T5d5oPc+2pZq5tLn4PSFo5EGo/kp0l3x8YqLw3mJWetW8OKnUxmj6MPhboptycAHkc7SysakyRh3Oenn6brRXQ==}
+  '@mikro-orm/migrations@6.4.9':
+    resolution: {integrity: sha512-vwTXG8PU3bpzTZxxu1dWlhnUumM2Yob2IWajoh+Rj9+19VBZYc5N3tm8FRekt5oPzxeK5/9+sDfxT9FzXgjeNw==}
     engines: {node: '>= 18.12.0'}
     peerDependencies:
       '@mikro-orm/core': ^6.0.0
@@ -3176,6 +3176,10 @@ packages:
     resolution: {integrity: sha512-2/AwEFQDFEy30iOLjrvHDIH7e4HEWH+f1Yl1bI5XMqzuoCUqwYCdxachgsgv0og/JdVZUhbfjcJAoHj5L1753A==}
     engines: {node: '>=16'}
 
+  type-fest@4.37.0:
+    resolution: {integrity: sha512-S/5/0kFftkq27FPNye0XM1e2NsnoD/3FS+pBmbjmmtLT6I+i344KoOf7pvXreaFsDamWeaJX55nczA1m5PsBDg==}
+    engines: {node: '>=16'}
+
   typed-array-buffer@1.0.3:
     resolution: {integrity: sha512-nAYYwfY3qnzX30IkA6AQZjVbtK6duGontcQm1WSG1MD94YLqK0515GNApXkoxKOWMusVssAHWLh9SeaoefYFGw==}
     engines: {node: '>= 0.4'}
@@ -3614,21 +3618,6 @@ snapshots:
       - supports-color
       - tedious
 
-  '@mikro-orm/knex@6.4.7(@mikro-orm/core@6.4.9)':
-    dependencies:
-      '@mikro-orm/core': 6.4.9
-      fs-extra: 11.3.0
-      knex: 3.1.0(mysql2@3.13.0)
-      sqlstring: 2.3.3
-    transitivePeerDependencies:
-      - mysql
-      - mysql2
-      - pg
-      - pg-native
-      - sqlite3
-      - supports-color
-      - tedious
-
   '@mikro-orm/knex@6.4.9(@mikro-orm/core@6.4.9)(mysql2@3.13.0)':
     dependencies:
       '@mikro-orm/core': 6.4.9
@@ -3644,10 +3633,10 @@ snapshots:
       - supports-color
       - tedious
 
-  '@mikro-orm/migrations@6.4.7(@mikro-orm/core@6.4.9)(@types/node@22.13.4)':
+  '@mikro-orm/migrations@6.4.9(@mikro-orm/core@6.4.9)(@types/node@22.13.4)':
     dependencies:
       '@mikro-orm/core': 6.4.9
-      '@mikro-orm/knex': 6.4.7(@mikro-orm/core@6.4.9)
+      '@mikro-orm/knex': 6.4.9(@mikro-orm/core@6.4.9)(mysql2@3.13.0)
       fs-extra: 11.3.0
       umzug: 3.8.2(@types/node@22.13.4)
     transitivePeerDependencies:
@@ -6031,7 +6020,7 @@ snapshots:
     dependencies:
       '@babel/code-frame': 7.26.2
       index-to-position: 0.1.2
-      type-fest: 4.35.0
+      type-fest: 4.37.0
 
   parse-ms@4.0.0: {}
 
@@ -6199,7 +6188,7 @@ snapshots:
       '@types/normalize-package-data': 2.4.4
       normalize-package-data: 6.0.2
       parse-json: 8.1.0
-      type-fest: 4.35.0
+      type-fest: 4.37.0
       unicorn-magic: 0.1.0
 
   readable-stream@2.3.8:
@@ -6692,6 +6681,8 @@ snapshots:
 
   type-fest@4.35.0: {}
 
+  type-fest@4.37.0: {}
+
   typed-array-buffer@1.0.3:
     dependencies:
       call-bound: 1.0.3
@@ -6746,7 +6737,7 @@ snapshots:
       emittery: 0.13.1
       fast-glob: 3.3.3
       pony-cause: 2.1.11
-      type-fest: 4.35.0
+      type-fest: 4.37.0
     transitivePeerDependencies:
       - '@types/node'
 
