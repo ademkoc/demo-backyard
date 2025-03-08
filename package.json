@@ -127,7 +127,7 @@
   },
   "devDependencies": {
     "@mikro-orm/cli": "^6.4.7",
-    "@mikro-orm/migrations": "^6.4.7",
+    "@mikro-orm/migrations": "^6.4.9",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/commit-analyzer": "^13.0.1",
     "@sourcemeta/jsonschema": "^6.0.3",
