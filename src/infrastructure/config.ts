@@ -1,11 +1,7 @@
 import { Level } from 'pino';
 import packageJson from '../../package.json' with { type: 'json' };
 
-export enum Environment {
-  Test = 'test',
-  Production = 'production',
-  Development = 'development'
-}
+export type Environment = 'test' | 'production' | 'development';
 
 export function getEnv<T extends string> (key: string): T | undefined {
   return process.env[key] as T;
@@ -21,7 +17,7 @@ export function getMandatoryEnv (key: string): string {
 
 export function getConfig () {
   return {
-    nodeEnv: Environment.Production,
+    nodeEnv: 'production' as Environment,
     serviceName: getEnv('SERVICE_NAME') || packageJson.name,
     environment: getMandatoryEnv('APP_ENV') as Environment,
     port: Number(getEnv('PORT')) || 3000,

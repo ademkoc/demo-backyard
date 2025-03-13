@@ -3,6 +3,7 @@
   "compilerOptions": {
     "outDir": "dist",
     "rewriteRelativeImportExtensions": true,
+    "erasableSyntaxOnly": true,
     "strictNullChecks": true,
     "sourceMap": true
   },

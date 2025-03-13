@@ -11,18 +11,22 @@ export function createCustomerService (fastify: FastifyInstance, options: Create
 }
 
 export class CustomerService {
-  constructor (private readonly customerRepository: CustomerRepository) {}
+  #customerRepository: CustomerRepository;
+
+  constructor (customerRepository: CustomerRepository) {
+    this.#customerRepository = customerRepository;
+  }
 
   async create (payload: CustomerNewFormBody) {
-    const newCustomer = this.customerRepository.insert(payload);
+    const newCustomer = this.#customerRepository.insert(payload);
 
-    await this.customerRepository.getEntityManager().flush();
+    await this.#customerRepository.getEntityManager().flush();
 
     return newCustomer;
   }
 
   async findById (id: number) {
-    const asd = await this.customerRepository.findOneOrFail(id);
+    const asd = await this.#customerRepository.findOneOrFail(id);
 
     return asd;
   }

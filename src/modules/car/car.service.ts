@@ -10,10 +10,14 @@ export function createCarService (fastify: FastifyInstance, options: CreateCarSe
 }
 
 export class CarService {
-  constructor (private readonly carRepository: CarRepository) {}
+  #carRepository: CarRepository;
+
+  constructor (carRepository: CarRepository) {
+    this.#carRepository = carRepository;
+  }
 
   create () {
-    return this.carRepository.create({
+    return this.#carRepository.create({
       model: '',
       brand: '',
       year: '2000',
