@@ -1,7 +1,7 @@
 import type { FastifyPluginCallback } from 'fastify';
 import { createCustomerService } from '../customer.service.ts';
-import { applyGetCustomerRoute } from './get.ts';
-import { applyCreateCustomerRoute } from './create.ts';
+import { getCustomerRoute } from './get-customer.ts';
+import { createCustomerRoute } from './create-customer.ts';
 import { CustomerRepository } from '../customer.repository.ts';
 
 export interface CustomerModuleOptions {
@@ -13,8 +13,8 @@ const fn: FastifyPluginCallback<CustomerModuleOptions> = (fastify, options, done
     customerRepository: options.customerRepository
   });
 
-  applyGetCustomerRoute(fastify, { customerService });
-  applyCreateCustomerRoute(fastify, { customerService });
+  getCustomerRoute(fastify, { customerService });
+  createCustomerRoute(fastify, { customerService });
 
   done();
 };

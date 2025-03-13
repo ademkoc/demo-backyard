@@ -1,16 +1,16 @@
 import type { FastifyInstance } from 'fastify';
 import type { CarService } from '../car.service.ts';
 
-interface GetCarPluginOptions {
+interface GetCarRouteOptions {
   carService: CarService;
 }
 
-export function applyGetCarRoute (fastify: FastifyInstance, opts: GetCarPluginOptions) {
+export function getCarRoute (fastify: FastifyInstance, opts: GetCarRouteOptions) {
   fastify.route(
     {
       method: 'GET',
       url: '/:car_id',
-      handler: async function getCar (req, res) {
+      handler: async function getCarRouteHandler (req, res) {
         return 'adem:koc';
       }
     }

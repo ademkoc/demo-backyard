@@ -2,11 +2,11 @@ import { FastifyInstance } from 'fastify';
 import type { CustomerService } from '../customer.service.ts';
 import { CustomerNewFormBody } from '../../../api-types.ts';
 
-interface CreateCustomerPluginOptions {
+interface CreateCustomerPluginRouteOptions {
   customerService: CustomerService;
 }
 
-export function applyCreateCustomerRoute (fastify:FastifyInstance, opts: CreateCustomerPluginOptions) {
+export function createCustomerRoute (fastify:FastifyInstance, opts: CreateCustomerPluginRouteOptions) {
   const { customerService } = opts;
 
   fastify.route<{ Body: CustomerNewFormBody }>(
@@ -16,7 +16,7 @@ export function applyCreateCustomerRoute (fastify:FastifyInstance, opts: CreateC
       schema: {
         body: { $ref: 'https://koc.app/schemas/rentacarserver/customer-new-form.json' }
       },
-      handler: async function createCustomer (req, res) {
+      handler: async function createCustomerRouteHandler (req, res) {
         return await customerService.create(req.body);
       }
     }

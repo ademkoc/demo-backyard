@@ -5,7 +5,7 @@ interface GetCustomerPluginOptions {
   customerService: CustomerService;
 }
 
-export function applyGetCustomerRoute (fastify:FastifyInstance, opts: GetCustomerPluginOptions) {
+export function getCustomerRoute (fastify:FastifyInstance, opts: GetCustomerPluginOptions) {
   const { customerService } = opts;
 
   fastify.route<{ Params: { customer_id: string } }>(
@@ -20,7 +20,7 @@ export function applyGetCustomerRoute (fastify:FastifyInstance, opts: GetCustome
           }
         }
       },
-      handler: async function createCustomer (req, res) {
+      handler: async function getCustomerRouteHandler (req, res) {
         return await customerService.findById(+req.params.customer_id);
       }
     }
