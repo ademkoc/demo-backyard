@@ -1,12 +1,12 @@
-import Fastify from 'fastify';
+import Fastify, { FastifyBaseLogger } from 'fastify';
 import metricsPlugin from 'fastify-metrics';
-import CustomerNewFormBody from '../schemas/customer-new-form.json' with { type: 'json' };
 import carModule from './modules/car/routes/index.ts';
 import customerModule from './modules/customer/routes/index.ts';
 import healthModule from './modules/healthcheck/routes/index.ts';
 import { getLogger } from './infrastructure/logger.ts';
 import { initORM, ormEntityManagerHook, Services } from './infrastructure/db/db.ts';
 import { otelSdk } from './infrastructure/tracing.ts';
+import { readSchemas } from './infrastructure/schema-reader.ts';
 
 declare module 'fastify' {
   interface FastifyInstance {
@@ -20,13 +20,13 @@ export async function createApp () {
   const db = await initORM();
 
   const app = Fastify({
-    loggerInstance: getLogger()
+    loggerInstance: getLogger() as FastifyBaseLogger
     // connectionTimeout: 1000
   });
 
   app.decorate('db', db);
 
-  app.addSchema(CustomerNewFormBody);
+  await readSchemas(app);
 
   app.addHook('onRequest', function onRequest (request, reply, done) { ormEntityManagerHook(db.em, done); });
   app.addHook('onClose', async function onClose () {
