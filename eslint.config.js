@@ -6,7 +6,7 @@ export default [
   ...neo({
     ts: true,
     semi: true,
-    ignores: ['dist']
+    ignores: ['dist', 'migrations']
   }),
   {
     rules: {

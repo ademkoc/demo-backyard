@@ -140,7 +140,6 @@
     "neostandard": "0.12.1",
     "rimraf": "6.0.1",
     "semantic-release": "^24.2.3",
-    "sql-formatter": "^15.4.11",
     "tsx": "4.19.3",
     "typescript": "5.8.2"
   },
@@ -150,7 +149,6 @@
   },
   "mikro-orm": {
     "alwaysAllowTs": true,
-    "useTsNode": false,
     "configPaths": [
       "./src/infrastructure/db/mikro-orm.config.ts",
       "./src/infrastructure/db/mikro-orm.config.js"

@@ -1,34 +1,16 @@
 import { defineConfig } from '@mikro-orm/mysql';
-import { TSMigrationGenerator } from '@mikro-orm/migrations';
-import { format } from 'sql-formatter';
-import { getDatabaseConfig } from '../config.ts';
+import { getConfig, getDatabaseConfig } from '../config.ts';
 
-class CustomMigrationGenerator extends TSMigrationGenerator {
-  generateMigrationFile (className: string, diff: { up: string[]; down: string[] }): string {
-    const comment = '/* eslint-disable */\n\n' + '// This file was generated via custom migration generator\n\n';
-    return comment + super.generateMigrationFile(className, diff);
-  }
-
-  createStatement (sql: string, padLeft: number): string {
-    sql = format(sql, { language: 'mysql' });
-    // a bit of indenting magic
-    sql = sql.split('\n').map((l, i) => i === 0 ? l : `${' '.repeat(padLeft + 13)}${l}`).join('\n');
-
-    return super.createStatement(sql, padLeft);
-  }
-}
-
-const config = getDatabaseConfig();
+const config = getConfig();
 
 // no need to specify the `driver` now, it will be inferred automatically
 export default defineConfig({
-  clientUrl: config.databaseURL,
+  clientUrl: getDatabaseConfig().databaseURL,
   // folder-based discovery setup, using common filename suffix
   entities: ['src/modules/**/*.entity.js'],
   entitiesTs: ['src/modules/**/*.entity.ts'],
 
   migrations: {
-    generator: CustomMigrationGenerator,
     tableName: 'migrations', // name of database table with log of executed transactions
     path: './migrations', // path to the folder with migrations
     snapshot: false,
@@ -36,5 +18,6 @@ export default defineConfig({
   },
 
   // enable debug mode to log SQL queries and discovery information
-  debug: true
+  debug: config.environment !== 'production',
+  preferTs: config.environment !== 'production'
 });
