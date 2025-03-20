@@ -111,7 +111,7 @@
     "@mikro-orm/core": "^6.4.9",
     "@mikro-orm/mysql": "^6.4.9",
     "@opentelemetry/api": "^1.9.0",
-    "@opentelemetry/exporter-trace-otlp-http": "^0.57.2",
+    "@opentelemetry/exporter-trace-otlp-http": "^0.200.0",
     "@opentelemetry/instrumentation-http": "^0.200.0",
     "@opentelemetry/instrumentation-mysql2": "^0.45.2",
     "@opentelemetry/instrumentation-undici": "^0.11.0",
