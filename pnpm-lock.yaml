@@ -82,8 +82,8 @@ importers:
         specifier: ^13.0.1
         version: 13.0.1(semantic-release@24.2.3(typescript@5.8.2))
       '@sourcemeta/jsonschema':
-        specifier: ^6.0.3
-        version: 6.0.3
+        specifier: ^7.1.2
+        version: 7.1.2
       '@types/node':
         specifier: 22.13.4
         version: 22.13.4
@@ -844,8 +844,8 @@ packages:
     resolution: {integrity: sha512-tlqY9xq5ukxTUZBmoOp+m61cqwQD5pHJtFY3Mn8CA8ps6yghLH/Hw8UPdqg4OLmFW3IFlcXnQNmo/dh8HzXYIQ==}
     engines: {node: '>=18'}
 
-  '@sourcemeta/jsonschema@6.0.3':
-    resolution: {integrity: sha512-XrkB7qs0YNeNBsmDtLKMZWVVoVsqwe2ZaE9X0DVUh0AB1q5KIvViybrprgDV9DEhvJqJ1rI1bMW9QYU/CswtLA==}
+  '@sourcemeta/jsonschema@7.1.2':
+    resolution: {integrity: sha512-cxzU0UYn4Nx7Fyw1BDEw/34iKWKvZUIvnW1CWbfMykrbm1PmEauFRxxkAwh5hs6M6DZQ/CUrDOfZ2P/+zk0rkw==}
     hasBin: true
 
   '@stylistic/eslint-plugin@2.11.0':
@@ -4144,7 +4144,7 @@ snapshots:
 
   '@sindresorhus/merge-streams@4.0.0': {}
 
-  '@sourcemeta/jsonschema@6.0.3': {}
+  '@sourcemeta/jsonschema@7.1.2': {}
 
   '@stylistic/eslint-plugin@2.11.0(eslint@9.22.0)(typescript@5.8.2)':
     dependencies:
