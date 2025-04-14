@@ -135,7 +135,7 @@
     "@types/node": "22.13.4",
     "conventional-changelog-conventionalcommits": "^8.0.0",
     "dotenv": "^16.4.7",
-    "eslint": "9.22.0",
+    "eslint": "9.24.0",
     "fastify-tsconfig": "3.0.0",
     "json-schema-to-typescript": "15.0.4",
     "neostandard": "0.12.1",
