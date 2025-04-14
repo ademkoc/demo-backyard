@@ -127,7 +127,7 @@
     "pino-pretty": "^13.0.0"
   },
   "devDependencies": {
-    "@mikro-orm/cli": "^6.4.11",
+    "@mikro-orm/cli": "^6.4.13",
     "@mikro-orm/migrations": "^6.4.13",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/commit-analyzer": "^13.0.1",
