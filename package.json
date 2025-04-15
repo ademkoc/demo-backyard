@@ -134,7 +134,7 @@
     "@sourcemeta/jsonschema": "^6.0.3",
     "@types/node": "22.13.4",
     "conventional-changelog-conventionalcommits": "^8.0.0",
-    "dotenv": "^16.4.7",
+    "dotenv": "^16.5.0",
     "eslint": "9.24.0",
     "fastify-tsconfig": "3.0.0",
     "json-schema-to-typescript": "15.0.4",
