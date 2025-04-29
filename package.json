@@ -132,7 +132,7 @@
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/commit-analyzer": "^13.0.1",
     "@sourcemeta/jsonschema": "^9.1.1",
-    "@types/node": "22.14.1",
+    "@types/node": "22.15.3",
     "conventional-changelog-conventionalcommits": "^8.0.0",
     "dotenv": "^16.5.0",
     "eslint": "9.24.0",
