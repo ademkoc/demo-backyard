@@ -131,7 +131,7 @@
     "@mikro-orm/migrations": "^6.4.13",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/commit-analyzer": "^13.0.1",
-    "@sourcemeta/jsonschema": "^9.1.1",
+    "@sourcemeta/jsonschema": "^9.2.1",
     "@types/node": "22.14.1",
     "conventional-changelog-conventionalcommits": "^8.0.0",
     "dotenv": "^16.5.0",
