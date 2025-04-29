@@ -1,6 +1,6 @@
 import type { FastifyInstance } from 'fastify';
 import type { CarService } from '../car.service.ts';
-import { CarNewFormBody } from '../../../api-types.ts';
+import type { CarNewFormBody } from '../../../api-types.ts';
 
 interface CreateCarRouteOptions {
   carService: CarService;

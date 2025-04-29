@@ -1,6 +1,6 @@
-import { FastifyInstance } from 'fastify';
+import type { FastifyInstance } from 'fastify';
 import type { CustomerService } from '../customer.service.ts';
-import { CustomerNewFormBody } from '../../../api-types.ts';
+import type { CustomerNewFormBody } from '../../../api-types.ts';
 
 interface CreateCustomerPluginRouteOptions {
   customerService: CustomerService;

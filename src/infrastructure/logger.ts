@@ -1,5 +1,5 @@
 import pretty from 'pino-pretty';
-import pino, { Level } from 'pino';
+import pino, { type Level } from 'pino';
 import { getConfig } from './config.ts';
 
 const redactPaths = [

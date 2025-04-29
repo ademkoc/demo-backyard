@@ -1,5 +1,5 @@
 import { EntitySchema } from '@mikro-orm/core';
-import { CustomBaseEntity, CustomBaseEntitySchema } from '../common/base.entity.ts';
+import { type CustomBaseEntity, CustomBaseEntitySchema } from '../common/base.entity.ts';
 import { CarRepository } from './car.repository.ts';
 
 export interface ICar {

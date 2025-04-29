@@ -1,4 +1,4 @@
-import { Level } from 'pino';
+import type { Level } from 'pino';
 import packageJson from '../../package.json' with { type: 'json' };
 
 export type Environment = 'test' | 'production' | 'development';

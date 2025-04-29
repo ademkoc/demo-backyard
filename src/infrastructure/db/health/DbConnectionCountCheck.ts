@@ -8,7 +8,7 @@
  */
 
 import { BaseCheck, Result } from '@adonisjs/health';
-import { HealthCheckResult } from '@adonisjs/health/types';
+import { type HealthCheckResult } from '@adonisjs/health/types';
 import { EntityManager } from '@mikro-orm/mysql';
 
 /**

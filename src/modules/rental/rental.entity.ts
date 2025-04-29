@@ -1,7 +1,7 @@
 import { EntitySchema, ReferenceKind } from '@mikro-orm/core';
-import { CustomBaseEntity, CustomBaseEntitySchema } from '../common/base.entity.ts';
-import { Car, ICar } from '../car/car.entity.ts';
-import { Customer, ICustomer } from '../customer/customer.entity.ts';
+import { type CustomBaseEntity, CustomBaseEntitySchema } from '../common/base.entity.ts';
+import { Car, type ICar } from '../car/car.entity.ts';
+import { Customer, type ICustomer } from '../customer/customer.entity.ts';
 
 export interface IRental {
   customers: ICustomer;

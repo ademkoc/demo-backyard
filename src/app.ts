@@ -1,10 +1,10 @@
-import Fastify, { FastifyBaseLogger } from 'fastify';
+import Fastify, { type FastifyBaseLogger } from 'fastify';
 import metricsPlugin from 'fastify-metrics';
 import carModule from './modules/car/routes/index.ts';
 import customerModule from './modules/customer/routes/index.ts';
 import healthModule from './modules/healthcheck/routes/index.ts';
 import { getLogger } from './infrastructure/logger.ts';
-import { initORM, ormEntityManagerHook, Services } from './infrastructure/db/db.ts';
+import { initORM, ormEntityManagerHook, type Services } from './infrastructure/db/db.ts';
 import { otelSdk } from './infrastructure/tracing.ts';
 import { readSchemas } from './infrastructure/schema-reader.ts';
 

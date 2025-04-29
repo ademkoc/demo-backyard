@@ -1,5 +1,5 @@
 import type { FastifyInstance } from 'fastify';
-import { CustomerNewFormBody } from '../../api-types.ts';
+import { type CustomerNewFormBody } from '../../api-types.ts';
 import { CustomerRepository } from './customer.repository.ts';
 
 interface CreateCustomerServiceOptions {

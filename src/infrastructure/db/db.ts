@@ -1,6 +1,6 @@
-import { HookHandlerDoneFunction } from 'fastify';
-import { EntityManager, EntityRepository, MikroORM, Options, RequestContext } from '@mikro-orm/mysql';
-import { IRental, Rental } from '../../modules/rental/rental.entity.ts';
+import { type HookHandlerDoneFunction } from 'fastify';
+import { EntityManager, EntityRepository, MikroORM, type Options, RequestContext } from '@mikro-orm/mysql';
+import { type IRental, Rental } from '../../modules/rental/rental.entity.ts';
 import { Customer } from '../../modules/customer/customer.entity.ts';
 import { CustomerRepository } from '../../modules/customer/customer.repository.ts';
 import { Car } from '../../modules/car/car.entity.ts';
