@@ -120,7 +120,7 @@
     "@opentelemetry/sdk-trace-base": "^2.0.0",
     "@opentelemetry/sdk-trace-node": "^2.0.0",
     "@opentelemetry/semantic-conventions": "^1.32.0",
-    "fastify": "^5.3.0",
+    "fastify": "^5.3.1",
     "fastify-metrics": "^12.1.0",
     "fastify-plugin": "^5.0.1",
     "pino": "^9.6.0",
