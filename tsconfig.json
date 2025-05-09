@@ -7,5 +7,5 @@
     "strictNullChecks": true,
     "verbatimModuleSyntax": true,
   },
-  "include": ["src", "schemas"]
+  "include": ["src", "schemas", "mikro-orm.config.ts"]
 }

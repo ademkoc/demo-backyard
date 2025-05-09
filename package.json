@@ -148,13 +148,6 @@
   "engines": {
     "node": ">=22"
   },
-  "mikro-orm": {
-    "alwaysAllowTs": true,
-    "configPaths": [
-      "./src/infrastructure/db/mikro-orm.config.ts",
-      "./src/infrastructure/db/mikro-orm.config.js"
-    ]
-  },
   "pnpm": {
     "onlyBuiltDependencies": [
       "esbuild",
