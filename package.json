@@ -104,7 +104,7 @@
   },
   "dependencies": {
     "@adonisjs/health": "^2.0.0",
-    "@fastify/otel": "^0.7.0",
+    "@fastify/otel": "^0.8.0",
     "@fastify/type-provider-json-schema-to-ts": "^5.0.0",
     "@mikro-orm/core": "^6.4.15",
     "@mikro-orm/mysql": "^6.4.15",
