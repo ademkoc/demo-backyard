@@ -1,11 +1,11 @@
 {
   "extends": "fastify-tsconfig",
   "compilerOptions": {
-    "outDir": "dist",
     "rewriteRelativeImportExtensions": true,
     "erasableSyntaxOnly": true,
     "strictNullChecks": true,
     "verbatimModuleSyntax": true,
+    "noEmit": true
   },
-  "include": ["src", "schemas", "mikro-orm.config.ts"]
+  "include": ["src/**/*", "schemas", ]
 }
