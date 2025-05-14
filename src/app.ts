@@ -1,12 +1,14 @@
 import Fastify, { type FastifyBaseLogger } from 'fastify';
 import metricsPlugin from 'fastify-metrics';
-import carModule from './modules/car/routes/index.ts';
-import customerModule from './modules/customer/routes/index.ts';
-import healthModule from './modules/healthcheck/routes/index.ts';
+import carModule from './modules/car/index.ts';
+import customerModule from './modules/customer/index.ts';
+import healthModule from './modules/healthcheck/routes/health.ts';
 import { getLogger } from './infrastructure/logger.ts';
 import { initORM, ormEntityManagerHook, type Services } from './infrastructure/db/db.ts';
 import { otelSdk } from './infrastructure/tracing.ts';
 import { readSchemas } from './infrastructure/schema-reader.ts';
+import { CarService } from './modules/car/car.service.ts';
+import { CustomerService } from './modules/customer/customer.service.ts';
 
 declare module 'fastify' {
   interface FastifyInstance {
@@ -18,6 +20,9 @@ export async function createApp () {
   otelSdk.start();
 
   const db = await initORM();
+
+  const carService = new CarService(db.car);
+  const customerService = new CustomerService(db.customer);
 
   const app = Fastify({
     loggerInstance: getLogger() as FastifyBaseLogger
@@ -48,8 +53,8 @@ export async function createApp () {
   app.register(metricsPlugin.default, { endpoint: '/metrics', routeMetrics: { enabled: true } });
 
   app.register(healthModule, { prefix: '/healthcheck' });
-  app.register(carModule, { carRepository: db.car, prefix: 'v1/cars' });
-  app.register(customerModule, { customerRepository: db.customer, prefix: 'v1/customers' });
+  app.register(carModule, { carService, prefix: 'v1/cars' });
+  app.register(customerModule, { customerService, prefix: 'v1/customers' });
 
   app.ready(() => {
     console.log(app.printRoutes());

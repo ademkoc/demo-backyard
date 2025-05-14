@@ -5,8 +5,8 @@ interface GetCustomerPluginOptions {
   customerService: CustomerService;
 }
 
-export function getCustomerRoute (fastify:FastifyInstance, opts: GetCustomerPluginOptions) {
-  const { customerService } = opts;
+export function getCustomerRoute (fastify: FastifyInstance, options: GetCustomerPluginOptions) {
+  const { customerService } = options;
 
   fastify.route<{ Params: { customer_id: string } }>(
     {

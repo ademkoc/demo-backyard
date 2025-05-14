@@ -1,10 +1,10 @@
-import type { FastifyInstance } from 'fastify';
+import type { FastifyPluginCallback } from 'fastify';
 import { DiskSpaceCheck, HealthChecks, MemoryHeapCheck } from '@adonisjs/health';
 import { DbCheck } from '../../../infrastructure/db/health/DbCheck.ts';
 import { DbConnectionCountCheck } from '../../../infrastructure/db/health/DbConnectionCountCheck.ts';
 
-export function healthCheckModule (fastify:FastifyInstance) {
-  fastify.get('/', async function checkHealth (req, res) {
+const fn: FastifyPluginCallback = (fastify, options, done) => {
+  fastify.get('/', async function checkHealth () {
     const healthChecks = new HealthChecks().register([
       new DiskSpaceCheck(),
       new MemoryHeapCheck(),
@@ -16,4 +16,8 @@ export function healthCheckModule (fastify:FastifyInstance) {
 
     return { report };
   });
-}
+
+  done();
+};
+
+export default fn;

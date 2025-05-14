@@ -1,14 +1,5 @@
-import type { FastifyInstance } from 'fastify';
 import { type CustomerNewFormBody } from '../../api-types.ts';
 import { CustomerRepository } from './customer.repository.ts';
-
-interface CreateCustomerServiceOptions {
-  customerRepository: CustomerRepository
-}
-
-export function createCustomerService (fastify: FastifyInstance, options: CreateCustomerServiceOptions) {
-  return new CustomerService(options.customerRepository);
-}
 
 export class CustomerService {
   #customerRepository: CustomerRepository;

@@ -6,7 +6,7 @@ interface CreateCustomerPluginRouteOptions {
   customerService: CustomerService;
 }
 
-export function createCustomerRoute (fastify:FastifyInstance, opts: CreateCustomerPluginRouteOptions) {
+export function createCustomerRoute (fastify: FastifyInstance, opts: CreateCustomerPluginRouteOptions) {
   const { customerService } = opts;
 
   fastify.route<{ Body: CustomerNewFormBody }>(
