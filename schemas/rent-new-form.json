@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://koc.app/schemas/rentacarserver/rent-new-form.json",
+  "title": "RentNewFormBody",
+  "description": "This is the the request body for renting car.",
+  "type": "object",
+  "required": [
+    "customer_id",
+    "car_id"
+  ],
+  "properties": {
+    "customer_id": {
+      "description": "Customer id",
+      "type": "number"
+    },
+    "car_id": {
+      "description": "Car id",
+      "type": "number"
+    }
+  },
+  "additionalProperties": false
+}

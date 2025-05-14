@@ -1,0 +1,34 @@
+import packageJson from '../../package.json' with { type: 'json' };
+import {
+  ATTR_SERVICE_NAME,
+  ATTR_SERVICE_VERSION
+} from '@opentelemetry/semantic-conventions';
+import { FastifyOtelInstrumentation } from '@fastify/otel';
+import { resourceFromAttributes } from '@opentelemetry/resources';
+import { NodeSDK } from '@opentelemetry/sdk-node';
+import { HttpInstrumentation } from '@opentelemetry/instrumentation-http';
+import { BatchSpanProcessor, AlwaysOnSampler } from '@opentelemetry/sdk-trace-base';
+import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
+import { MySQL2Instrumentation } from '@opentelemetry/instrumentation-mysql2';
+import { UndiciInstrumentation } from '@opentelemetry/instrumentation-undici';
+// import { diag, DiagConsoleLogger, DiagLogLevel } from '@opentelemetry/api';
+
+// diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
+
+const traceExporter = new OTLPTraceExporter();
+
+export const otelSdk = new NodeSDK({
+  resource: resourceFromAttributes({
+    [ATTR_SERVICE_NAME]: packageJson.name,
+    [ATTR_SERVICE_VERSION]: '0.1.0'
+  }),
+  traceExporter,
+  sampler: new AlwaysOnSampler(),
+  spanProcessors: [new BatchSpanProcessor(traceExporter)],
+  instrumentations: [
+    new FastifyOtelInstrumentation({ servername: packageJson.name, registerOnInitialization: true }),
+    new HttpInstrumentation(),
+    new MySQL2Instrumentation({ enabled: true }),
+    new UndiciInstrumentation()
+  ]
+});
