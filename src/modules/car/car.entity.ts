@@ -1,18 +1,18 @@
 import { EntitySchema } from '@mikro-orm/core';
-import { type CustomBaseEntity, CustomBaseEntitySchema } from '../common/base.entity.ts';
+import { type BaseEntity, BaseEntitySchema } from '../common/base.entity.ts';
 import { CarRepository } from './car.repository.ts';
 
-export interface ICar {
+export interface ICar extends BaseEntity {
   brand: string;
   model: string;
   year: string;
   km: string;
-  isAvailable: boolean;
+  isAvailable?: boolean;
 }
 
-export const Car = new EntitySchema<ICar, CustomBaseEntity>({
+export const Car = new EntitySchema<ICar, BaseEntity>({
   name: 'Car',
-  extends: CustomBaseEntitySchema,
+  extends: BaseEntitySchema,
   repository: () => CarRepository,
   properties: {
     brand: { type: 'varchar', length: 255, nullable: false },

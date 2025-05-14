@@ -17,7 +17,9 @@ export function createCustomerRoute (fastify: FastifyInstance, opts: CreateCusto
         body: { $ref: 'https://koc.app/schemas/rentacarserver/customer-new-form.json' }
       },
       handler: async function createCustomerRouteHandler (req, res) {
-        return await customerService.create(req.body);
+        return {
+          data: await customerService.create(req.body)
+        };
       }
     }
   );

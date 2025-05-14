@@ -14,7 +14,12 @@ export function createCarRoute (fastify: FastifyInstance, opts: CreateCarRouteOp
       schema: {
         body: { $ref: 'https://koc.app/schemas/rentacarserver/car-new-form.json' }
       },
-      handler: async function createCarRouteHandler (req, res) {}
+      handler: async function createCarRouteHandler (req, res) {
+        const { carService } = opts;
+        return {
+          data: await carService.create(req.body)
+        };
+      }
     }
   );
 }

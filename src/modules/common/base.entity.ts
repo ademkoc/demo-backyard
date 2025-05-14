@@ -1,14 +1,14 @@
 import { EntitySchema, OptionalProps } from '@mikro-orm/core';
 
-export interface CustomBaseEntity {
+export interface BaseEntity {
   id: number;
   createdAt: Date;
   updatedAt: Date;
   [OptionalProps]?: 'createdAt' | 'updatedAt';
 }
 
-export const CustomBaseEntitySchema = new EntitySchema<CustomBaseEntity>({
-  name: 'CustomBaseEntity',
+export const BaseEntitySchema = new EntitySchema<BaseEntity>({
+  name: 'BaseEntity',
   abstract: true,
   properties: {
     id: { type: 'number', primary: true },

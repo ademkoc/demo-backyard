@@ -21,7 +21,7 @@ export async function createApp () {
 
   const db = await initORM();
 
-  const carService = new CarService(db.car);
+  const carService = new CarService(db.car, db.rental);
   const customerService = new CustomerService(db.customer);
 
   const app = Fastify({
@@ -55,6 +55,22 @@ export async function createApp () {
   app.register(healthModule, { prefix: '/healthcheck' });
   app.register(carModule, { carService, prefix: 'v1/cars' });
   app.register(customerModule, { customerService, prefix: 'v1/customers' });
+
+  app.setErrorHandler(function (error, request, reply) {
+    this.log.error(error);
+
+    if (error.statusCode) {
+      return reply.status(error.statusCode).send({
+        statusCode: error.statusCode,
+        message: error.message
+      });
+    }
+
+    reply.status(404).send({
+      statusCode: 404,
+      message: 'Resource not found!'
+    });
+  });
 
   app.ready(() => {
     console.log(app.printRoutes());

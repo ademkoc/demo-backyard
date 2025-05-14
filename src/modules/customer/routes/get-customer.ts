@@ -8,7 +8,7 @@ interface GetCustomerPluginOptions {
 export function getCustomerRoute (fastify: FastifyInstance, options: GetCustomerPluginOptions) {
   const { customerService } = options;
 
-  fastify.route<{ Params: { customer_id: string } }>(
+  fastify.route<{ Params: { customer_id: number } }>(
     {
       method: 'GET',
       url: '/:customer_id',
@@ -16,12 +16,14 @@ export function getCustomerRoute (fastify: FastifyInstance, options: GetCustomer
         params: {
           type: 'object',
           properties: {
-            customer_id: { type: 'string' }
+            customer_id: { type: 'number' }
           }
         }
       },
       handler: async function getCustomerRouteHandler (req, res) {
-        return await customerService.findById(+req.params.customer_id);
+        return {
+          data: await customerService.findById(req.params.customer_id)
+        };
       }
     }
   );

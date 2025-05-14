@@ -1,18 +1,18 @@
 import { Collection, EntitySchema, ReferenceKind } from '@mikro-orm/core';
-import { type CustomBaseEntity, CustomBaseEntitySchema } from '../common/base.entity.ts';
+import { type BaseEntity, BaseEntitySchema } from '../common/base.entity.ts';
 import { Car, type ICar } from '../car/car.entity.ts';
 import { CustomerRepository } from './customer.repository.ts';
 
-export interface ICustomer extends CustomBaseEntity {
+export interface ICustomer extends BaseEntity {
   name: string;
   surname: string;
   birthdate: Date;
   cars: Collection<ICar>;
 }
 
-export const Customer = new EntitySchema<ICustomer, CustomBaseEntity>({
+export const Customer = new EntitySchema<ICustomer, BaseEntity>({
   name: 'Customer',
-  extends: CustomBaseEntitySchema,
+  extends: BaseEntitySchema,
   repository: () => CustomerRepository,
   properties: {
     name: { type: 'varchar', length: 255, nullable: false },
