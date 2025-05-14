@@ -23,84 +23,7 @@
     "migration:create": "NODE_OPTIONS='--experimental-strip-types -r dotenv/config' mikro-orm migration:create",
     "migration:down": "NODE_OPTIONS='--experimental-strip-types -r dotenv/config' mikro-orm migration:down",
     "migration:up": "NODE_OPTIONS='--experimental-strip-types -r dotenv/config' mikro-orm migration:up",
-    "release": "semantic-release",
     "test": "node --experimental-strip-types --test ./test/*.ts"
-  },
-  "release": {
-    "plugins": [
-      [
-        "@semantic-release/commit-analyzer",
-        {
-          "preset": "conventionalcommits",
-          "releaseRules": [
-            {
-              "type": "breaking",
-              "release": "major"
-            },
-            {
-              "type": "feat",
-              "release": "minor"
-            },
-            {
-              "type": "chore",
-              "release": "patch"
-            },
-            {
-              "type": "fix",
-              "release": "patch"
-            },
-            {
-              "type": "docs",
-              "release": "patch"
-            },
-            {
-              "type": "refactor",
-              "release": "patch"
-            },
-            {
-              "type": "test",
-              "release": "patch"
-            }
-          ]
-        }
-      ],
-      [
-        "@semantic-release/release-notes-generator",
-        {
-          "preset": "conventionalcommits",
-          "presetConfig": {
-            "types": [
-              {
-                "type": "feat",
-                "section": "Features"
-              },
-              {
-                "type": "fix",
-                "section": "Bug Fixes"
-              },
-              {
-                "type": "chore",
-                "section": "Chores"
-              },
-              {
-                "type": "docs",
-                "section": "Documentation"
-              },
-              {
-                "type": "refactor",
-                "section": "Refactors"
-              },
-              {
-                "type": "test",
-                "section": "Tests"
-              }
-            ]
-          }
-        }
-      ],
-      "@semantic-release/changelog",
-      "@semantic-release/github"
-    ]
   },
   "dependencies": {
     "@adonisjs/health": "^2.0.0",
@@ -127,18 +50,14 @@
   "devDependencies": {
     "@mikro-orm/cli": "^6.4.15",
     "@mikro-orm/migrations": "^6.4.15",
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/commit-analyzer": "^13.0.1",
     "@sourcemeta/jsonschema": "^9.2.4",
     "@types/node": "22.15.17",
-    "conventional-changelog-conventionalcommits": "^8.0.0",
     "dotenv": "^16.5.0",
     "eslint": "9.26.0",
     "fastify-tsconfig": "3.0.0",
     "json-schema-to-typescript": "15.0.4",
     "neostandard": "0.12.1",
     "rimraf": "6.0.1",
-    "semantic-release": "^24.2.3",
     "typescript": "5.8.3"
   },
   "packageManager": "pnpm@10.6.2",
