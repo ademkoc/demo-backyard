@@ -1,12 +1,12 @@
 {
-  "name": "mikro-orm-demo",
+  "name": "demo-backyard",
   "version": "1.0.1",
   "private": true,
   "description": "",
   "keywords": [],
   "repository": {
     "type": "git",
-    "url": "https://github.com/ademkoc/mikro-orm-demo.git"
+    "url": "https://github.com/ademkoc/demo-backyard.git"
   },
   "license": "MIT",
   "author": "Adem Koç",
