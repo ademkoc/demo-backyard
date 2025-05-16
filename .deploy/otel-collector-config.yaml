@@ -1,0 +1,45 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: otel-collector:4317
+
+  hostmetrics:
+    scrapers:
+      memory:
+
+extensions:
+  health_check: {}
+
+processors:
+  batch:
+  memory_limiter:
+    check_interval: 5s
+    limit_mib: 400
+  resourcedetection:
+    detectors: [system]
+
+exporters:
+  otlp/jaeger:
+    endpoint: jaeger:4317
+    tls:
+      insecure: true
+
+  otlphttp/prometheus:
+    endpoint: "http://prometheus:9090/api/v1/otlp"
+    tls:
+      insecure: true
+
+  debug:
+    verbosity: detailed
+
+service:
+  pipelines:
+    metrics:
+      receivers: [otlp, hostmetrics]
+      processors: [memory_limiter, resourcedetection, batch]
+      exporters: [otlphttp/prometheus, debug]
+    traces:
+      receivers: [otlp]
+      processors: [memory_limiter, resourcedetection, batch]
+      exporters: [otlp/jaeger, debug]

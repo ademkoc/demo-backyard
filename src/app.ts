@@ -1,5 +1,4 @@
 import Fastify, { type FastifyBaseLogger } from 'fastify';
-import metricsPlugin from 'fastify-metrics';
 import carModule from './modules/car/index.ts';
 import customerModule from './modules/customer/index.ts';
 import healthModule from './modules/healthcheck/routes/health.ts';
@@ -50,8 +49,6 @@ export async function createApp () {
       app.log.error('Error terminating OpenTelemetry', error);
     }
   });
-
-  app.register(metricsPlugin.default, { endpoint: '/metrics', routeMetrics: { enabled: true } });
 
   app.register(healthModule, { prefix: '/healthcheck' });
   app.register(carModule, { carService, prefix: 'v1/cars' });
