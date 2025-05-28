@@ -1,3 +1,9 @@
+## [1.1.1](https://github.com/ademkoc/demo-backyard/compare/v1.1.0...v1.1.1) (2025-05-28)
+
+### Chores
+
+* update packages ([c005e48](https://github.com/ademkoc/demo-backyard/commit/c005e482a3ddc6eabf8ce5d380aa92bac94427b0))
+
 ## [1.1.0](https://github.com/ademkoc/demo-backyard/compare/v1.0.1...v1.1.0) (2025-05-28)
 
 ### Features
