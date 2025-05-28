@@ -1,3 +1,15 @@
+## [1.1.0](https://github.com/ademkoc/demo-backyard/compare/v1.0.1...v1.1.0) (2025-05-28)
+
+### Features
+
+* add openapi documention ([f41a90a](https://github.com/ademkoc/demo-backyard/commit/f41a90ac95e0c610d40f8257ddf2ca759790a485))
+
+### Chores
+
+* add typecheck script ([81e293a](https://github.com/ademkoc/demo-backyard/commit/81e293af2af78292103775e5128efe9bcf21d74e))
+* simplify db service ([3ed021a](https://github.com/ademkoc/demo-backyard/commit/3ed021ab1b457476e1fbb46aabef9eaacd1f82e8))
+* update packages ([f157154](https://github.com/ademkoc/demo-backyard/commit/f157154e23dc6157c6540ce3ef6404221022402e))
+
 ## [1.0.1](https://github.com/ademkoc/demo-backyard/compare/v1.0.0...v1.0.1) (2025-05-16)
 
 ### Chores
