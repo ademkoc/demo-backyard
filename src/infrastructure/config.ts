@@ -15,10 +15,11 @@ export function getMandatoryEnv (key: string): string {
   return value;
 }
 
-export function getConfig () {
+function getConfig () {
   return {
     nodeEnv: 'production' as Environment,
     serviceName: getEnv('SERVICE_NAME') || packageJson.name,
+    serviceVersion: getEnv('SERVICE_VERSION') || packageJson.version,
     environment: getMandatoryEnv('APP_ENV') as Environment,
     port: Number(getEnv('PORT')) || 3000,
     logLevel: getEnv('LOG_LEVEL') as Level || 'info'
@@ -30,3 +31,5 @@ export function getDatabaseConfig () {
     databaseURL: getMandatoryEnv('DATABASE_URL')
   };
 }
+
+export const config = Object.freeze(getConfig());

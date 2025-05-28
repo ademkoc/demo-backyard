@@ -1,6 +1,6 @@
 import pretty from 'pino-pretty';
 import pino, { type Level } from 'pino';
-import { getConfig } from './config.ts';
+import { config } from './config.ts';
 
 const redactPaths = [
   'req.headers.authorization',
@@ -27,8 +27,6 @@ const redactPaths = [
 ];
 
 export function getLogger () {
-  const config = getConfig();
-
   if (config.environment !== 'production') {
     return pino.default(
       pretty({
