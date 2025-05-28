@@ -1,7 +1,6 @@
 import createError from 'http-errors';
 import type { EntityManager } from '@mikro-orm/mysql';
 import type { CarNewFormBody, Pagination, RentNewFormBody } from '../../api-types.ts';
-import type { RentalRepository } from '../rental/rental.repository.ts';
 import { CarRepository } from './car.repository.ts';
 import { Car } from './car.entity.ts';
 import { Customer } from '../customer/customer.entity.ts';
@@ -11,7 +10,7 @@ export class CarService {
   #em: EntityManager;
   #carRepository: CarRepository;
 
-  constructor (carRepository: CarRepository, rentalRepository: RentalRepository) {
+  constructor (carRepository: CarRepository) {
     this.#carRepository = carRepository;
     this.#em = carRepository.getEntityManager();
   }
