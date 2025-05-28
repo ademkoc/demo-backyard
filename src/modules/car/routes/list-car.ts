@@ -1,14 +1,11 @@
-import type { FastifyInstance } from 'fastify';
+import fp from 'fastify-plugin';
+import type { FastifyPluginCallback } from 'fastify';
 import type { CarService } from '../car.service.ts';
 import type { Pagination } from '../../../api-types.ts';
 import { Tag } from '../../../infrastructure/http/swagger.ts';
 
-interface ListCarRouteOptions {
-  carService: CarService;
-}
-
-export function listCarRoute (fastify:FastifyInstance, options: ListCarRouteOptions) {
-  fastify.route<{ Querystring: Pagination }>(
+const fn: FastifyPluginCallback = (app, options, done) => {
+  app.route<{ Querystring: Pagination }>(
     {
       method: 'GET',
       url: '/',
@@ -17,7 +14,7 @@ export function listCarRoute (fastify:FastifyInstance, options: ListCarRouteOpti
         querystring: { $ref: 'https://koc.app/schemas/rentacarserver/pagination.json' }
       },
       handler: async function listCarRouteHandler (req, res) {
-        const { carService } = options;
+        const carService = app.getDecorator<CarService>('carService');
 
         const [data, total] = await carService.get(req.query);
 
@@ -30,4 +27,11 @@ export function listCarRoute (fastify:FastifyInstance, options: ListCarRouteOpti
       }
     }
   );
-}
+
+  done();
+};
+
+export default fp(fn, {
+  name: 'list-car-route-plugin',
+  encapsulate: false
+});

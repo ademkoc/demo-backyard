@@ -1,19 +1,18 @@
+import fp from 'fastify-plugin';
 import type { FastifyPluginCallback } from 'fastify';
+import getCustomerRoutePlugin from './routes/get-customer.ts';
+import createCustomerRoutePlugin from './routes/create-customer.ts';
+import { customerRepository } from '../../infrastructure/db/db.ts';
 import { CustomerService } from './customer.service.ts';
-import { getCustomerRoute } from './routes/get-customer.ts';
-import { createCustomerRoute } from './routes/create-customer.ts';
 
-export interface CustomerModuleOptions {
-  customerService: CustomerService
-}
-
-const fn: FastifyPluginCallback<CustomerModuleOptions> = (fastify, options, done) => {
-  const { customerService } = options;
-
-  getCustomerRoute(fastify, { customerService });
-  createCustomerRoute(fastify, { customerService });
-
+const fn: FastifyPluginCallback = (app, options, done) => {
+  app.decorate('customerService', new CustomerService(customerRepository));
+  app.register(getCustomerRoutePlugin);
+  app.register(createCustomerRoutePlugin);
   done();
 };
 
-export default fn;
+export default fp(fn, {
+  name: 'customer-module-plugin',
+  encapsulate: true
+});

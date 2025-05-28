@@ -1,23 +1,22 @@
+import fp from 'fastify-plugin';
 import type { FastifyPluginCallback } from 'fastify';
-import { createCarRoute } from './routes/create-car.ts';
-import { getCarRoute } from './routes/get-car.ts';
-import { listCarRoute } from './routes/list-car.ts';
-import { rentCarRoute } from './routes/rent-car.ts';
-import type { CarService } from './car.service.ts';
+import { CarService } from './car.service.ts';
+import { carRepository } from '../../infrastructure/db/db.ts';
+import createCarRoutePlugin from './routes/create-car.ts';
+import getCarRoutePlugin from './routes/get-car.ts';
+import listCarRoutePlugin from './routes/list-car.ts';
+import rentCarRoutePlugin from './routes/rent-car.ts';
 
-interface CarModuleOptions {
-  carService: CarService
-}
-
-const fn: FastifyPluginCallback<CarModuleOptions> = function buildCarModule (fastify, options, done) {
-  const { carService } = options;
-
-  createCarRoute(fastify, { carService });
-  getCarRoute(fastify, { carService });
-  listCarRoute(fastify, { carService });
-  rentCarRoute(fastify, { carService });
-
+const fn: FastifyPluginCallback = function carModulePlugin (app, options, done) {
+  app.decorate('carService', new CarService(carRepository));
+  app.register(createCarRoutePlugin);
+  app.register(getCarRoutePlugin);
+  app.register(listCarRoutePlugin);
+  app.register(rentCarRoutePlugin);
   done();
 };
 
-export default fn;
+export default fp(fn, {
+  name: 'car-module-plugin',
+  encapsulate: true
+});

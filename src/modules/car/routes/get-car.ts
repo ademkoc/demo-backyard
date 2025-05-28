@@ -1,13 +1,10 @@
-import type { FastifyInstance } from 'fastify';
-import type { CarService } from '../car.service.ts';
+import fp from 'fastify-plugin';
+import type { FastifyPluginCallback } from 'fastify';
 import { Tag } from '../../../infrastructure/http/swagger.ts';
+import type { CarService } from '../car.service.ts';
 
-interface GetCarRouteOptions {
-  carService: CarService;
-}
-
-export function getCarRoute (fastify: FastifyInstance, options: GetCarRouteOptions) {
-  fastify.route<{ Params: { car_id: number } }>(
+const fn: FastifyPluginCallback = (app, options, done) => {
+  app.route<{ Params: { car_id: number } }>(
     {
       method: 'GET',
       url: '/:car_id',
@@ -23,11 +20,19 @@ export function getCarRoute (fastify: FastifyInstance, options: GetCarRouteOptio
         }
       },
       handler: async function getCarRouteHandler (req, res) {
-        const { carService } = options;
+        const carService = app.getDecorator<CarService>('carService');
+
         return {
           data: await carService.getById(req.params.car_id)
         };
       }
     }
   );
-}
+
+  done();
+};
+
+export default fp(fn, {
+  name: 'get-car-route-plugin',
+  encapsulate: false
+});

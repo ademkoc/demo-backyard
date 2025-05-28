@@ -1,15 +1,10 @@
-import type { FastifyInstance } from 'fastify';
+import fp from 'fastify-plugin';
+import type { FastifyPluginCallback } from 'fastify';
 import type { CustomerService } from '../customer.service.ts';
 import { Tag } from '../../../infrastructure/http/swagger.ts';
 
-interface GetCustomerPluginOptions {
-  customerService: CustomerService;
-}
-
-export function getCustomerRoute (fastify: FastifyInstance, options: GetCustomerPluginOptions) {
-  const { customerService } = options;
-
-  fastify.route<{ Params: { customer_id: number } }>(
+const fn: FastifyPluginCallback = (app, options, done) => {
+  app.route<{ Params: { customer_id: number } }>(
     {
       method: 'GET',
       url: '/:customer_id',
@@ -23,10 +18,19 @@ export function getCustomerRoute (fastify: FastifyInstance, options: GetCustomer
         }
       },
       handler: async function getCustomerRouteHandler (req, res) {
+        const customerService = app.getDecorator<CustomerService>('customerService');
+
         return {
           data: await customerService.findById(req.params.customer_id)
         };
       }
     }
   );
-}
+
+  done();
+};
+
+export default fp(fn, {
+  name: 'get-customer-route-plugin',
+  encapsulate: false
+});

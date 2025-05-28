@@ -1,16 +1,11 @@
-import type { FastifyInstance } from 'fastify';
-import type { CustomerService } from '../customer.service.ts';
+import fp from 'fastify-plugin';
+import type { FastifyPluginCallback } from 'fastify';
 import type { CustomerNewFormBody } from '../../../api-types.ts';
+import type { CustomerService } from '../customer.service.ts';
 import { Tag } from '../../../infrastructure/http/swagger.ts';
 
-interface CreateCustomerPluginRouteOptions {
-  customerService: CustomerService;
-}
-
-export function createCustomerRoute (fastify: FastifyInstance, opts: CreateCustomerPluginRouteOptions) {
-  const { customerService } = opts;
-
-  fastify.route<{ Body: CustomerNewFormBody }>(
+const fn: FastifyPluginCallback = (app, options, done) => {
+  app.route<{ Body: CustomerNewFormBody }>(
     {
       method: 'POST',
       url: '/',
@@ -19,10 +14,19 @@ export function createCustomerRoute (fastify: FastifyInstance, opts: CreateCusto
         body: { $ref: 'https://koc.app/schemas/rentacarserver/customer-new-form.json' }
       },
       handler: async function createCustomerRouteHandler (req, res) {
+        const customerService = app.getDecorator<CustomerService>('customerService');
+
         return {
           data: await customerService.create(req.body)
         };
       }
     }
   );
-}
+
+  done();
+};
+
+export default fp(fn, {
+  name: 'create-customer-route-plugin',
+  encapsulate: false
+});
