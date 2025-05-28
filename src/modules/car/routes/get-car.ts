@@ -1,5 +1,6 @@
 import type { FastifyInstance } from 'fastify';
 import type { CarService } from '../car.service.ts';
+import { Tag } from '../../../infrastructure/http/swagger.ts';
 
 interface GetCarRouteOptions {
   carService: CarService;
@@ -11,6 +12,7 @@ export function getCarRoute (fastify: FastifyInstance, options: GetCarRouteOptio
       method: 'GET',
       url: '/:car_id',
       schema: {
+        tags: [Tag.CAR],
         params: {
           type: 'object',
           properties: {

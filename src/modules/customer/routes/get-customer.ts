@@ -1,5 +1,6 @@
 import type { FastifyInstance } from 'fastify';
 import type { CustomerService } from '../customer.service.ts';
+import { Tag } from '../../../infrastructure/http/swagger.ts';
 
 interface GetCustomerPluginOptions {
   customerService: CustomerService;
@@ -13,6 +14,7 @@ export function getCustomerRoute (fastify: FastifyInstance, options: GetCustomer
       method: 'GET',
       url: '/:customer_id',
       schema: {
+        tags: [Tag.CUSTOMER],
         params: {
           type: 'object',
           properties: {

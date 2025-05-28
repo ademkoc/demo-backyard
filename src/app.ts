@@ -9,6 +9,7 @@ import { readSchemas } from './infrastructure/schema-reader.ts';
 import { CarService } from './modules/car/car.service.ts';
 import { CustomerService } from './modules/customer/customer.service.ts';
 import { NotFoundError } from '@mikro-orm/core';
+import { registerSwagger } from './infrastructure/http/swagger.ts';
 
 declare module 'fastify' {
   interface FastifyInstance {
@@ -50,6 +51,7 @@ export async function createApp () {
     }
   });
 
+  registerSwagger(app);
   app.register(healthModule, { prefix: '/healthcheck' });
   app.register(carModule, { carService, prefix: 'v1/cars' });
   app.register(customerModule, { customerService, prefix: 'v1/customers' });

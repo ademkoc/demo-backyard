@@ -1,6 +1,7 @@
 import type { FastifyInstance } from 'fastify';
 import type { CarService } from '../car.service.ts';
 import type { CarNewFormBody } from '../../../api-types.ts';
+import { Tag } from '../../../infrastructure/http/swagger.ts';
 
 interface CreateCarRouteOptions {
   carService: CarService;
@@ -12,6 +13,7 @@ export function createCarRoute (fastify: FastifyInstance, opts: CreateCarRouteOp
       method: 'POST',
       url: '/',
       schema: {
+        tags: [Tag.CAR],
         body: { $ref: 'https://koc.app/schemas/rentacarserver/car-new-form.json' }
       },
       handler: async function createCarRouteHandler (req, res) {
