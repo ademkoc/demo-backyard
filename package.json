@@ -22,9 +22,10 @@
     "migration:create": "NODE_OPTIONS='--experimental-strip-types -r dotenv/config' mikro-orm migration:create",
     "migration:down": "NODE_OPTIONS='--experimental-strip-types -r dotenv/config' mikro-orm migration:down",
     "migration:up": "NODE_OPTIONS='--experimental-strip-types -r dotenv/config' mikro-orm migration:up",
+    "release": "semantic-release",
     "start": "node --experimental-strip-types --env-file=.env src/server.ts",
     "test": "node --experimental-strip-types --test ./test/*.ts",
-    "release": "semantic-release"
+    "typecheck": "tsc --watch --preserveWatchOutput"
   },
   "dependencies": {
     "@adonisjs/health": "^2.0.0",
