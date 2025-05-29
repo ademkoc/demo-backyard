@@ -62,7 +62,7 @@
     "@sourcemeta/jsonschema": "^9.2.4",
     "@types/http-errors": "^2.0.4",
     "@types/node": "22.15.24",
-    "conventional-changelog-conventionalcommits": "^8.0.0",
+    "conventional-changelog-conventionalcommits": "^9.0.0",
     "dotenv": "^16.5.0",
     "eslint": "9.27.0",
     "fastify-tsconfig": "3.0.0",
