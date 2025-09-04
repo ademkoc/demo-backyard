@@ -33,7 +33,7 @@
     "@fastify/swagger": "^9.5.1",
     "@fastify/swagger-ui": "^5.2.2",
     "@fastify/type-provider-json-schema-to-ts": "^5.0.0",
-    "@mikro-orm/core": "^6.4.15",
+    "@mikro-orm/core": "^6.5.2",
     "@mikro-orm/mysql": "^6.4.15",
     "@opentelemetry/api": "^1.9.0",
     "@opentelemetry/exporter-metrics-otlp-grpc": "^0.201.1",
