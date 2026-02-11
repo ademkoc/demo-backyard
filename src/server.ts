@@ -19,13 +19,13 @@ async function startServer () {
     process.exit(1);
   }
 
-  process.once('SIGTERM', (signal) => closeServer(signal));
-  process.once('SIGINT', (signal) => closeServer(signal));
-
   const closeServer = (signal:NodeJS.Signals) => {
     app.log.info(`Received signal to close: ${signal}`);
     abortController.abort();
   };
+
+  process.once('SIGTERM', (signal) => closeServer(signal));
+  process.once('SIGINT', (signal) => closeServer(signal));
 }
 
 startServer();

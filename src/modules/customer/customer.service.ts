@@ -9,7 +9,7 @@ export class CustomerService {
   }
 
   async create (payload: CustomerNewFormBody) {
-    const newCustomer = this.#customerRepository.insert(payload);
+    const newCustomer = this.#customerRepository.create(payload);
 
     await this.#customerRepository.getEntityManager().flush();
 
@@ -17,8 +17,8 @@ export class CustomerService {
   }
 
   async findById (id: number) {
-    const asd = await this.#customerRepository.findOneOrFail(id);
+    const customer = await this.#customerRepository.findOneOrFail(id);
 
-    return asd;
+    return customer;
   }
 }

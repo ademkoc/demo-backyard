@@ -7,7 +7,7 @@ export interface ICar extends BaseEntity {
   brand: string;
   model: string;
   year: string;
-  km: string;
+  km: number;
   isAvailable?: boolean;
   rentals: Collection<IRental>;
 }
