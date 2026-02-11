@@ -41,13 +41,13 @@ export class CarService {
 
       const customer = await em.findOneOrFail(Customer, { id: payload.customer_id });
 
-      const rental = this.#em.create(Rental, {
+      const rental = em.create(Rental, {
         rentDate: new Date(),
         car,
         customer
       });
 
-      await this.#em.flush();
+      await em.flush();
 
       return rental;
     });
