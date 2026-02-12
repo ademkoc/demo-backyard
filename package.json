@@ -63,7 +63,7 @@
     "@types/http-errors": "^2.0.4",
     "@types/node": "22.15.24",
     "conventional-changelog-conventionalcommits": "^8.0.0",
-    "dotenv": "^16.5.0",
+    "dotenv": "^17.2.4",
     "eslint": "9.27.0",
     "fastify-tsconfig": "3.0.0",
     "json-schema-to-typescript": "15.0.4",
